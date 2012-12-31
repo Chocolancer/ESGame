@@ -1,0 +1,16 @@
+think of switch to Unity?
+switch to openGL?
+2 dimensional
+coloured squares, frames to make a sample game
+cthulhu saves the world as inspiration
+transition between states
+
+
+stuff for engine
+
+draw shapes/entities
+input (keyboard, mouse, console)
+state management
+
+use case design document
+visio design document
