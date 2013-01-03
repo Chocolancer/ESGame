@@ -3,54 +3,46 @@ package ui
 	import org.flixel.*;
 	
 	/**
-	 * All-purpose text box with configurable colours
+	 * All-purpose text box.
 	 * Can currently only proceed and delete using Z key.
 	 * 
 	 * @author Jason Bolanos & Matt Fisher
 	 */
-	public class TextBox extends FlxSprite
+	public class TextBox extends FlxGroup
 	{
-		public var text: FlxText;
-		public var caption: FlxText;
+		private var text: FlxText;
+		private var caption: FlxText;
 		private var prompt: FlxText;
-		
-		public static var borderColor: uint = 0x0A141F; //default value
-		public static var panelColor: uint = 0x336699; //default value
+		private var panel: Panel;
 		
 		public function TextBox(x: int, y: int, width: int, height: int, captionStr: String, textStr: String): void
 		{
-			super(x, y);
+			super();
+			panel = new Panel(x, y, width, height);
 			
-			makeGraphic(width, height, borderColor);
-			makeGraphic(width - 5, height - 5, panelColor);
-			
-			caption = new FlxText((width / 2) - captionStr.length, height / 3, 200, captionStr);
-			text = new FlxText((width / 2) - textStr.length, height / 3, 200, textStr);
+			caption = new FlxText((width / 2) - 100, (height / 2) - (height / 12), 200, captionStr);
+			text = new FlxText((width / 2) - 80, (height / 2) + (height / 12), 300, textStr);
 			prompt = new FlxText(width - 200, height - 8, 200, "(Press Z to continue)");
-			alive = false;
+			visible = false;
+			
+			add(panel);
+			add(caption);
+			add(text);
+			add(prompt);
 		}
 		
 		override public function update():void
 		{
 			//key press
 			if (FlxG.keys.Z) {
-				alive = false;
-				exists = false;
+				visible = false;
 			}
-			
-			this.caption.draw();
-			this.text.draw();
-			this.prompt.draw();
 			
 			super.update();
 		}
 		
-		public function changeColors(newBorder: uint, newPanel: uint) {
-			borderColor
-		}
-		
 		public function show(): void {
-			alive = true;
+			visible = true;
 		}
 	}
 

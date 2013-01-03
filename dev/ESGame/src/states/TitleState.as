@@ -42,7 +42,8 @@ package states
 		}
 		
 		private function onStartNewGame(): void {
-			
+			//FlxG.switchState(new CharacterCreationState()); //should be an interlude state, returning here
+			//FlxG.switchState(new CharacterCreationState());
 		}
 		
 		private function onLoadGame(): void {
@@ -50,7 +51,7 @@ package states
 				warning.show();
 			}
 			else {
-				//enter load game state
+				//FlxG.switchState(new LoadState());
 			}
 		}
  
