@@ -16,6 +16,11 @@ package ui
 		private var panel: Panel;
 		private var border: Panel;
 		
+		public var width: int;
+		public var height: int;
+		public var x: int;
+		public var y: int;
+		
 		public static var borderColor: uint = 0xff0a141f; //default value
 		public static var panelColor: uint = 0xff336699; //default value
 		public var keepAlive: Boolean = false;
@@ -59,6 +64,10 @@ package ui
 		
 		public function show(): void {
 			visible = true;
+		}
+		
+		public function hidePrompt(): void {
+			prompt.visible = false;
 		}
 		
 		public function toggleActiveComponents(buttonCollection: Object): void {

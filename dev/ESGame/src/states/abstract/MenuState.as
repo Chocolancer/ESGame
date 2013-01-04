@@ -1,6 +1,7 @@
 package states.abstract 
 {
 	import org.flixel.*;
+	import ui.*;
 	/**
 	 * ...
 	 * @author Jason Bolanos & Matt Fisher
@@ -8,7 +9,7 @@ package states.abstract
 	public class MenuState extends FlxState
 	{
 		protected var buttonCollection: Object = new Object();
-		protected var panelCollection: Object = new Object();
+		protected var panelCollection: Object = new Object(); //includes not just panels but textboxes as well
 		protected var textCollection: Object = new Object();
 		
 		public function addAllCoreComponents(): void {

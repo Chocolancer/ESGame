@@ -26,15 +26,14 @@ package states
 			buttonCollection["loadgame"].label.setFormat(null, 8, 0, "center");
 			buttonCollection["loadgame"].scale = buttonCollection["newgame"].scale = new FlxPoint(2, 2);
 			buttonCollection["newgame"].x = buttonCollection["loadgame"].x -= (buttonCollection["newgame"].width / 2);
-			warning = new TextBox(FlxG.width / 4, FlxG.height / 4, FlxG.width / 2, FlxG.height / 10, "No Save Files", "There are currently no save files to load.");
+			panelCollection["warning"] = new TextBox(FlxG.width / 4, FlxG.height / 4, FlxG.width / 2, FlxG.height / 10, "No Save Files", "There are currently no save files to load.");
 			
 			addAllCoreComponents();
-			add(warning);
 		}
  
 		override public function update():void
 		{
-			warning.toggleActiveComponents(buttonCollection);
+			panelCollection["warning"].toggleActiveComponents(buttonCollection);
 			super.update();
 		}
 		
@@ -45,7 +44,7 @@ package states
 		
 		private function onLoadGame(): void {
 			if (FlxG.saves == null) {
-				warning.show();
+				panelCollection["warning"].show();
 			}
 			else {
 				//FlxG.switchState(new LoadState());
