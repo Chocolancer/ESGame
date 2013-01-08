@@ -1,0 +1,72 @@
+Spells List:
+
+Ram Spells (Sun):
+
+Breath of Ram
+Cost: 5
+Imbues the essense of Ram into the caster's mouth, breathing out radiant heat.
+
+Wall of Gemmuna
+
+Quar's Fury
+
+Pestilence
+
+Sphere of Destruction
+
+Lum Spells (Moon):
+
+Silky Embrace
+
+Kena's Panacea
+
+Tears of Lorima
+
+Estrangement
+
+Reconciliation
+
+Em Spells (Star):
+
+Bind
+
+Imbue
+
+Sunder
+
+
+
+Kas Spells (Non-Elemental/Time/Space):
+
+Dilate
+Cost: 20
+Power: 125% - 250%
+Warps the enclosed space around an enemy, disintegrating its physical body.
+
+Accelerate
+Cost: 15
+Power: 15% - 40%
+Increases the AGL of target ally so they act and hit faster.
+
+Decelerate
+Cost: 12
+Power: 15% - 40%
+Decreases the AGL of target enemy so they act and hit slowly.
+
+Anomaly
+Cost: 70
+Power: 0 - 550% (random)
+An unexplainable occurance in the space-time continuum damages the enemy, damaging them for a random value.
+
+Pocket Dimension
+Cost: 90
+Chance: 10 - 80%
+Banishes a single enemy to a pocket dimension with varying degrees of success.
+
+Singularity
+Cost: 100
+Power: 300% - 500%
+Imbalances the equilibrium of spacetime, eradicating the existence of a target.
+
+
+

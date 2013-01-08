@@ -1,31 +1,57 @@
 package states
 {
+	import mechanics.BattleManager;
+	import mechanics.Character;
 	import org.flixel.*;
 	import ui.*;
  
 	public class TestState extends FlxState
 	{
-		private var talkBox: TextBox;
-		private var panelBox: TextBox;
-		private var warningBox: TextBox;
+		private var sampleCharacter: Character;
+		private var enemyCharacter: Character;
+		private var battleManager: BattleManager;
+		private var text1: FlxText;
+		private var text2: FlxText;
+		private var text3: FlxText;
+		private var attackButton: FlxButton;
+		private var levelupButton: FlxButton;
+		private var resetButton: FlxButton;
 			
 		override public function create():void
 		{
-			talkBox = new TextBox(0, 0, FlxG.width, (FlxG.height / 4), "Character", "I am speaking this line.");
-			panelBox = new TextBox(0, (FlxG.height / 4), (FlxG.width / 4), (FlxG.height - (FlxG.height / 4)), "Panel", "This is a panel.");
-			warningBox = new TextBox((FlxG.width / 4), (FlxG.height / 4), 200, 150, "Fixed Warning", "This is a fixed warning box.");
+			FlxG.mouse.show();
+			text1 = new FlxText(0, 0, FlxG.width, "Attack");
+			text2 = new FlxText(0, 10, FlxG.width, "Damage");
+			text3 = new FlxText(0, 20, FlxG.width, "Levelup");
+			attackButton = new FlxButton(0, 40, "Attack", attack);
+			levelupButton = new FlxButton(0, 60, "Levelup", levelup);
+			resetButton = new FlxButton(0, 80, "Reset", reset);
 			
+			sampleCharacter = new Character("Thaumaturge", 5, 15, 20);
 			
-			add(talkBox);
-			add(panelBox);
-			add(warningBox);
+			add(text1);
+			add(text2);
+			add(text3);
+			add(attackButton);
+			add(levelupButton);
+			add(resetButton);
+		}
+		
+		public function attack(): void {
+			//battleManager.attack();
+		}
+		
+		public function levelup(): void {
+			sampleCharacter.levelUp();
+			text3.text = "Strength: " + sampleCharacter.strength + " Agility: " + sampleCharacter.agility + " Intelligence: " + sampleCharacter.intelligence + " HP: " + sampleCharacter.hp + " TP: " + sampleCharacter.tp + " TP Recover: " + sampleCharacter.tpRecovery;
+		}
+		
+		public function reset(): void {
+			
 		}
  
 		override public function update():void
 		{
-			talkBox.show();
-			panelBox.show();
-			warningBox.show();
 			super.update();
 		}
  

@@ -15,7 +15,7 @@ package
 		
 		public function Main() 
 		{
-			super(640, 480, TitleState, 1);
+			super(640, 480, TestState, 1);
 		}
 		
 	}
