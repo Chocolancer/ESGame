@@ -1,72 +1,86 @@
 Spells List:
 
-Ram Spells (Sun):
+Spells heavily scale off INT multiplied by the power unless said otherwise.
 
-Breath of Ram
+Rahm Spells (Sun):
+
+Breath of Rahm
 Cost: 5
-Imbues the essense of Ram into the caster's mouth, breathing out radiant heat.
+Imbues the essense of Rahm into the caster's mouth, breathing out radiant heat.
 
 Wall of Gemmuna
+Cost: 10
+Those with a strong will are bestowed a fiery coat, increasing their constitution.
 
 Quar's Fury
+Cost: 10
+Those with a thirst for vengance are granted power to fulfill what they seek.
 
 Pestilence
+Cost: 30
+Purification begins by winnowing out those who are unworthy through disease.
 
 Sphere of Destruction
+Cost: 75
+Blessed be of Rahm, for it his he who fulfills the neverending cycle of purification.
 
 Lum Spells (Moon):
 
 Silky Embrace
+Lum's mercy heals a single afflicted.
 
 Kena's Panacea
+Lum's disciple is granted a cure-all that alleviates worldly pains to those of the faith.
 
 Tears of Lorima
+Lum's mercy knows no bounds, and will heal all those who are afflicted.
 
 Estrangement
+Those who turn their backs on Lum's mercy are suffocated by the oceanic hems of her garments.
 
 Reconciliation
+Those who die and were faithful unto death shall forever serve Lum in life.
 
 Em Spells (Star):
 
 Bind
+The best way to make enemies fall is to prevent them from doing anything at all.
 
 Imbue
 
 Sunder
 
-
-
 Kas Spells (Non-Elemental/Time/Space):
 
 Dilate
 Cost: 20
-Power: 125% - 250%
+Power: 1.25 - 2.5
 Warps the enclosed space around an enemy, disintegrating its physical body.
 
 Accelerate
 Cost: 15
-Power: 15% - 40%
+Power: 0.15 - 0.4
 Increases the AGL of target ally so they act and hit faster.
 
 Decelerate
 Cost: 12
-Power: 15% - 40%
+Power: 0.15 - 0.4
 Decreases the AGL of target enemy so they act and hit slowly.
 
 Anomaly
 Cost: 70
-Power: 0 - 550% (random)
+Power: 0 - 5 (random)
 An unexplainable occurance in the space-time continuum damages the enemy, damaging them for a random value.
 
 Pocket Dimension
 Cost: 90
-Chance: 10 - 80%
+Chance: 0 - 0.9
 Banishes a single enemy to a pocket dimension with varying degrees of success.
 
 Singularity
 Cost: 100
-Power: 300% - 500%
-Imbalances the equilibrium of spacetime, eradicating the existence of a target.
+Power: 3 - 5
+Imbalances the general relativity of spacetime, eradicating the existence of a target.
 
 
 
