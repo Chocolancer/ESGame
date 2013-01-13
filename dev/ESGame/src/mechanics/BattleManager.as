@@ -12,6 +12,11 @@ package mechanics
 			
 		}
 		
+		//public function getBattleOrder() {
+			//
+		//}
+		//
+		//public function 
 	}
 
 }

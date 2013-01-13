@@ -1,13 +1,13 @@
-package mechanics 
+package mechanics.items 
 {
 	/**
 	 * ...
 	 * @author Jason Bolanos & Matt Fisher
 	 */
-	public class Item 
+	public class Accessory 
 	{
 		
-		public function Item() 
+		public function Accessory() 
 		{
 			
 		}

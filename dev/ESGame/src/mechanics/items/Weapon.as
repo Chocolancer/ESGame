@@ -1,5 +1,6 @@
-package mechanics 
+package mechanics.items 
 {
+	import flash.text.engine.ElementFormat;
 	/**
 	 * ...
 	 * @author Jason Bolanos & Matt Fisher
@@ -8,6 +9,7 @@ package mechanics
 	{
 		private var minAttack: uint;
 		private var maxAttack: uint;
+		//private var element: Element;
 		
 		public function Weapon(min: uint, max: uint) 
 		{
@@ -16,12 +18,7 @@ package mechanics
 		}
 		
 		public function getDamage(): uint {
-			var damage: uint = minAttack + Math.floor(Math.random() * this.maxAttack);
-			if (damage > this.maxAttack) {
-				damage = this.maxAttack;
-			}
-			
-			return damage;
+			return minAttack + (Math.floor(Math.random() * this.maxAttack) - minAttack);
 		}
 		
 	}

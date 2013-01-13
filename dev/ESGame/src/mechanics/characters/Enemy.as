@@ -1,13 +1,13 @@
-package mechanics 
+package mechanics.characters 
 {
 	/**
 	 * ...
 	 * @author Jason Bolanos & Matt Fisher
 	 */
-	public class Accessory 
+	public class Enemy 
 	{
 		
-		public function Accessory() 
+		public function Enemy() 
 		{
 			
 		}

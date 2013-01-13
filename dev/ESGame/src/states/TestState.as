@@ -1,7 +1,8 @@
 package states
 {
+	import mechanics.characters.Character;
 	import mechanics.BattleManager;
-	import mechanics.Character;
+	import mechanics.LevelUpper;
 	import org.flixel.*;
 	import ui.*;
  
@@ -9,7 +10,7 @@ package states
 	{
 		private var sampleCharacter: Character;
 		private var enemyCharacter: Character;
-		private var battleManager: BattleManager;
+		//private var battleManager: BattleManager;
 		private var text1: FlxText;
 		private var text2: FlxText;
 		private var text3: FlxText;
@@ -27,7 +28,8 @@ package states
 			levelupButton = new FlxButton(0, 60, "Levelup", levelup);
 			resetButton = new FlxButton(0, 80, "Reset", reset);
 			
-			sampleCharacter = new Character("Thaumaturge", 5, 15, 20);
+			sampleCharacter = new Character("TestCharacter", "Ranger");
+			sampleCharacter.getClass().setBaseStats(sampleCharacter);
 			
 			add(text1);
 			add(text2);
@@ -42,8 +44,8 @@ package states
 		}
 		
 		public function levelup(): void {
-			sampleCharacter.levelUp();
-			text3.text = "Strength: " + sampleCharacter.strength + " Agility: " + sampleCharacter.agility + " Intelligence: " + sampleCharacter.intelligence + " HP: " + sampleCharacter.hp + " TP: " + sampleCharacter.tp + " TP Recover: " + sampleCharacter.tpRecovery;
+			LevelUpper.levelUp(sampleCharacter);
+			text3.text = "Strength: " + sampleCharacter.getStrength() + " Agility: " + sampleCharacter.getAgility() + " Intelligence: " + sampleCharacter.getIntelligence() + " HP: " + sampleCharacter.getHp() + " TP: " + sampleCharacter.getTp() + " TP Recover: " + sampleCharacter.getTpRecovery();
 		}
 		
 		public function reset(): void {
