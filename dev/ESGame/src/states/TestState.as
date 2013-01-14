@@ -3,6 +3,8 @@ package states
 	import mechanics.characters.Character;
 	import mechanics.BattleManager;
 	import mechanics.LevelUpper;
+	import globals.WeaponCollection;
+	import globals.ArmorCollection;
 	import org.flixel.*;
 	import ui.*;
  
@@ -28,8 +30,15 @@ package states
 			levelupButton = new FlxButton(0, 60, "Levelup", levelup);
 			resetButton = new FlxButton(0, 80, "Reset", reset);
 			
-			sampleCharacter = new Character("TestCharacter", "Ranger");
+			sampleCharacter = new Character("TestCharacter", "Soldier");
 			sampleCharacter.getClass().setBaseStats(sampleCharacter);
+			sampleCharacter.setWeapon(WeaponCollection.Orichalcon);
+			sampleCharacter.setArmor(ArmorCollection.TravellingClothes);
+			
+			enemyCharacter = new Character("EnemyCharacter", "Enemy", 20, 20, 20, 1000, 20);
+			enemyCharacter.setWeapon(WeaponCollection.Orichalcon);
+			enemyCharacter.setArmor(ArmorCollection.TravellingClothes);
+			
 			
 			add(text1);
 			add(text2);
@@ -40,7 +49,8 @@ package states
 		}
 		
 		public function attack(): void {
-			//battleManager.attack();
+			text1.text = "You attack for " + battleManager.startBattleStep(sampleCharacter, enemyCharacter) + "damage! Enemy HP: " + enemyCharacter.getHp();
+			text2.text = "Enemy attacks for " + battleManager.startBattleStep(enemyCharacter, sampleCharacter) + "damage! Your HP: " + sampleCharacter.getHp();
 		}
 		
 		public function levelup(): void {
@@ -49,7 +59,7 @@ package states
 		}
 		
 		public function reset(): void {
-			
+			sampleCharacter.getClass().setBaseStats(sampleCharacter);
 		}
  
 		override public function update():void

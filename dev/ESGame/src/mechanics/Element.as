@@ -6,12 +6,22 @@ package mechanics
 	 */
 	public class Element 
 	{
-		
-		public function Element() 
+		private var _multiplier: uint;
+		private var _elementName: String;
+
+		public function Element(name: String, mult: uint) 
 		{
-			
+			this._elementName = name;
+			this._multiplier = mult;
 		}
 		
+		public function getElementName(): String {
+			return this._elementName;
+		}
+		
+		public function getElementMultiplier(): uint {
+			return this._multiplier;
+		}
 	}
 
 }

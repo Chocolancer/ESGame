@@ -1,4 +1,4 @@
-package mechanics 
+package mechanics.characters 
 {
 	/**
 	 * ...
@@ -6,6 +6,8 @@ package mechanics
 	 */
 	public class Party 
 	{
+		private var members: Vector.<Character>;
+		private var formationBonus
 		
 		public function Party() 
 		{

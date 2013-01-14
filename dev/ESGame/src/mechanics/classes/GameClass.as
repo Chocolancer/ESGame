@@ -26,6 +26,18 @@ package mechanics.classes
 		
 		public function GameClass() { }
 		
+		public function attack(weaponDamage: uint, primaryStat: uint): uint {
+			return weaponDamage + primaryStat;
+		}
+		
+		public function attackTech(techMultiplier: uint, weaponDamage: uint, primaryStat: uint): uint {
+			return (weaponDamage + primaryStat) * techMultiplier;
+		}
+		
+		public function defend(armorDefense: uint, primaryStat: uint): uint {
+			return armorDefense + primaryStat;
+		}
+		
 		public static function getClass(clName: String): GameClass {
 			switch (clName) {
 				case "Soldier":

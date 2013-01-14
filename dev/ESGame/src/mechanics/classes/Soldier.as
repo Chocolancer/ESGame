@@ -24,7 +24,6 @@ package mechanics.classes
 			this.chanceHpIncrease = 70;
 			this.chanceTpIncrease = 30;
 		}
-		
 	}
 
 }

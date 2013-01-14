@@ -9,7 +9,7 @@ package globals
 	{
 		public function WeaponCollection() 
 		{
-			this.Orichalcon = new Weapon(50, 100);
+			this.Orichalcon = new Weapon("Orichalcon", 10, 25);
 		}
 		
 	}

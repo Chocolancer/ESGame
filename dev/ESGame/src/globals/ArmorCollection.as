@@ -1,6 +1,7 @@
 package globals 
 {
 	import mechanics.Armor;
+	import globals.Elements;
 	/**
 	 * ...
 	 * @author Jason Bolanos & Matt Fisher
@@ -9,7 +10,7 @@ package globals
 	{
 		public function ArmorCollection() 
 		{
-			this.TravellingClothes = new Armor(15);
+			this.TravellingClothes = new Armor("Travelling Clothes", 15);
 		}
 		
 	}

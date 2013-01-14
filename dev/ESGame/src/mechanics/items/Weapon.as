@@ -1,26 +1,30 @@
 package mechanics.items 
 {
-	import flash.text.engine.ElementFormat;
+	import mechanics.Element;
+	import globals.Elements;
 	/**
 	 * ...
 	 * @author Jason Bolanos & Matt Fisher
 	 */
-	public class Weapon 
+	public class Weapon extends Equipment
 	{
-		private var minAttack: uint;
-		private var maxAttack: uint;
-		//private var element: Element;
+		private var _minAttack: uint;
+		private var _maxAttack: uint;
 		
-		public function Weapon(min: uint, max: uint) 
+		public function Weapon(name: String, min: uint, max: uint, element: String = Elements.KAS, elementMultiplier: uint = 1) 
 		{
-			this.minAttack = min;
-			this.maxAttack = max;
+			super(name, element, elementMultiplier);
+			this._minAttack = min;
+			this._maxAttack = max;
 		}
 		
-		public function getDamage(): uint {
-			return minAttack + (Math.floor(Math.random() * this.maxAttack) - minAttack);
+		public function getPhysicalDamage(): uint {
+			return _minAttack + (Math.floor(Math.random() * this._maxAttack) - _minAttack);
 		}
 		
+		public function getElementalDamage(): uint {
+			return (_minAttack + (Math.floor(Math.random() * this._maxAttack) - _minAttack)) * _element.getElementMultiplier();
+		}
 	}
 
 }
