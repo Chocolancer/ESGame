@@ -11,6 +11,9 @@ package mechanics.classes
 		{
 			this.className = "Assassin";
 			
+			this.primaryStat = "Intelligence";
+			this.secondaryStat = "Agility";
+			
 			this.baseStr = 10;
 			this.baseAgl = 15;
 			this.baseInt = 15;

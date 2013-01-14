@@ -3,8 +3,7 @@ package states
 	import mechanics.characters.Character;
 	import mechanics.BattleManager;
 	import mechanics.LevelUpper;
-	import globals.WeaponCollection;
-	import globals.ArmorCollection;
+	import globals.EquipmentCollection;
 	import org.flixel.*;
 	import ui.*;
  
@@ -12,7 +11,8 @@ package states
 	{
 		private var sampleCharacter: Character;
 		private var enemyCharacter: Character;
-		//private var battleManager: BattleManager;
+		private var battleManager: BattleManager;
+		private var equipmentCollection: EquipmentCollection;
 		private var text1: FlxText;
 		private var text2: FlxText;
 		private var text3: FlxText;
@@ -22,6 +22,8 @@ package states
 			
 		override public function create():void
 		{
+			battleManager = new BattleManager();
+			equipmentCollection = new EquipmentCollection();
 			FlxG.mouse.show();
 			text1 = new FlxText(0, 0, FlxG.width, "Attack");
 			text2 = new FlxText(0, 10, FlxG.width, "Damage");
@@ -32,12 +34,12 @@ package states
 			
 			sampleCharacter = new Character("TestCharacter", "Soldier");
 			sampleCharacter.getClass().setBaseStats(sampleCharacter);
-			sampleCharacter.setWeapon(WeaponCollection.Orichalcon);
-			sampleCharacter.setArmor(ArmorCollection.TravellingClothes);
+			sampleCharacter.setWeapon(equipmentCollection.weaponCollection.Orichalcon);
+			sampleCharacter.setArmor(equipmentCollection.armorCollection.TravellingClothes);
 			
-			enemyCharacter = new Character("EnemyCharacter", "Enemy", 20, 20, 20, 1000, 20);
-			enemyCharacter.setWeapon(WeaponCollection.Orichalcon);
-			enemyCharacter.setArmor(ArmorCollection.TravellingClothes);
+			enemyCharacter = new Character("EnemyCharacter", "Enemy", 5, 5, 5, 1000, 20);
+			enemyCharacter.setWeapon(equipmentCollection.weaponCollection.Orichalcon);
+			enemyCharacter.setArmor(equipmentCollection.armorCollection.TravellingClothes);
 			
 			
 			add(text1);
@@ -49,8 +51,8 @@ package states
 		}
 		
 		public function attack(): void {
-			text1.text = "You attack for " + battleManager.startBattleStep(sampleCharacter, enemyCharacter) + "damage! Enemy HP: " + enemyCharacter.getHp();
-			text2.text = "Enemy attacks for " + battleManager.startBattleStep(enemyCharacter, sampleCharacter) + "damage! Your HP: " + sampleCharacter.getHp();
+			text1.text = "You attack for " + battleManager.startBattleStep(sampleCharacter, enemyCharacter) + " damage! Enemy HP: " + enemyCharacter.getHp();
+			text2.text = "Enemy attacks for " + battleManager.startBattleStep(enemyCharacter, sampleCharacter) + " damage! Your HP: " + sampleCharacter.getHp();
 		}
 		
 		public function levelup(): void {
@@ -60,6 +62,7 @@ package states
 		
 		public function reset(): void {
 			sampleCharacter.getClass().setBaseStats(sampleCharacter);
+			enemyCharacter = new Character("EnemyCharacter", "Enemy", 20, 20, 20, 1000, 20);
 		}
  
 		override public function update():void

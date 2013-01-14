@@ -10,17 +10,17 @@ package mechanics.items
 	{
 		private var _defense: uint;
 		
-		public function Armor(name: String, def: uint, element: String = Elements.KAS, elementMultiplier: uint = 1) 
+		public function Armor(name: String, desc: String, def: uint, element: String = Elements.KAS, elementMultiplier: uint = 1) 
 		{
-			super(name, element, elementMultiplier);
+			super(name, desc, element, elementMultiplier);
 			this._defense = def;
 		}
 		
-		public function getPhysicalDefense() {
+		public function getPhysicalDefense(): uint {
 			return this._defense;
 		}
 		
-		public function getElementalDefense() {
+		public function getElementalDefense(): uint {
 			return this._defense * this._element.getElementMultiplier();
 		}
 	}

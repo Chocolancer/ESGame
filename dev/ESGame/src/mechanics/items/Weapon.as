@@ -11,9 +11,9 @@ package mechanics.items
 		private var _minAttack: uint;
 		private var _maxAttack: uint;
 		
-		public function Weapon(name: String, min: uint, max: uint, element: String = Elements.KAS, elementMultiplier: uint = 1) 
+		public function Weapon(name: String, desc: String, min: uint, max: uint, element: String = Elements.KAS, elementMultiplier: uint = 1) 
 		{
-			super(name, element, elementMultiplier);
+			super(name, desc, element, elementMultiplier);
 			this._minAttack = min;
 			this._maxAttack = max;
 		}

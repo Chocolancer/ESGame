@@ -8,7 +8,14 @@ package mechanics.classes
 	 */
 	public class GameClass 
 	{
+		
+		public static const PRIMARY_STAT: String = "Primary";
+		public static const SECONDARY_STAT: String = "Secondary";
+		
 		protected var className: String;
+		
+		protected var primaryStat: String;
+		protected var secondaryStat: String;
 		
 		//base stats
 		protected var baseStr: uint;
@@ -25,6 +32,35 @@ package mechanics.classes
 		protected var chanceTpIncrease: uint;
 		
 		public function GameClass() { }
+		
+		public function getPrimarySecondaryStat(chr: Character, stat: String): uint {
+			var determiningStat: String;
+			var statToReturn: uint;
+			
+			//check what the function should be looking for
+			switch (stat) {
+				case GameClass.PRIMARY_STAT:
+					determiningStat = this.primaryStat;
+					break;
+				case GameClass.SECONDARY_STAT:
+					determiningStat = this.secondaryStat;
+			}
+			
+			//then get it
+			switch (determiningStat) {
+				case "Strength":
+					statToReturn = chr.getStrength();
+					break;
+				case "Agility":
+					statToReturn = chr.getAgility();
+					break;
+				case "Intelligence":
+					statToReturn = chr.getIntelligence();
+					break;
+			}
+			
+			return statToReturn;
+		}
 		
 		public function attack(weaponDamage: uint, primaryStat: uint): uint {
 			return weaponDamage + primaryStat;
