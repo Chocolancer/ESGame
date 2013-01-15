@@ -16,7 +16,7 @@
   <!-- Other classes to be compiled into your SWF -->
   <classpaths>
     <class path="src" />
-    <class path="flxlib" />
+    <class path="..\flixel 2.55" />
   </classpaths>
   <!-- Build options -->
   <build>
