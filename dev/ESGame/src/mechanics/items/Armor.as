@@ -1,6 +1,6 @@
 package mechanics.items 
 {
-	import mechanics.Element;
+	import mechanics.battle.Element;
 	import globals.Elements;
 	/**
 	 * ...

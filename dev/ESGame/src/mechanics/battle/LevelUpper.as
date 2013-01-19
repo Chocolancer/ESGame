@@ -1,4 +1,4 @@
-package mechanics 
+package mechanics.battle 
 {
 	import mechanics.characters.Character;
 	/**
@@ -28,13 +28,15 @@ package mechanics
 			}
 			
 			if (hptpChance < chr.getClass().getChanceHpIncrease()) {
-				chr.setHp(chr.getHp() + hptpFactor);
+				chr.setMaxHp(chr.getMaxHp() + hptpFactor);
+				chr.setCurrentHp(chr.getCurrentHp() + hptpFactor);
 			}
 			if (hptpChance < chr.getClass().getChanceTpIncrease()) {
-				chr.setTp(chr.getTp() + hptpFactor);
+				chr.setMaxHp(chr.getMaxHp() + hptpFactor);
+				chr.setCurrentTp(chr.getCurrentTp() + hptpFactor);
 			}
 			
-			chr.setTpRecovery(Math.ceil(chr.getTp() / chr.getIntelligence()));
+			chr.setTpRecovery(Math.ceil(chr.getMaxTp() / chr.getIntelligence()));
 			
 			//return a response to see which stats increased for front-end to process
 		}

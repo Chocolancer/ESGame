@@ -1,6 +1,6 @@
 package mechanics.items 
 {
-	import mechanics.Element;
+	import mechanics.battle.Element;
 	import globals.Elements;
 	/**
 	 * ...
@@ -19,11 +19,11 @@ package mechanics.items
 		}
 		
 		public function getPhysicalDamage(): uint {
-			return _minAttack + (Math.floor(Math.random() * this._maxAttack) - _minAttack);
+			return this._minAttack + (Math.floor(Math.random() * this._maxAttack) - _minAttack);
 		}
 		
 		public function getElementalDamage(): uint {
-			return (_minAttack + (Math.floor(Math.random() * this._maxAttack) - _minAttack)) * _element.getElementMultiplier();
+			return (this._minAttack + (Math.floor(Math.random() * this._maxAttack) - _minAttack)) * _element.getElementMultiplier();
 		}
 	}
 

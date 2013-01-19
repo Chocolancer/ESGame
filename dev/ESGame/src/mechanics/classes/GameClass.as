@@ -1,7 +1,6 @@
 package mechanics.classes 
 {
 	import mechanics.characters.Character;
-	import mechanics.characters.Enemy;
 	/**
 	 * ...
 	 * @author Jason Bolanos & Matt Fisher
@@ -33,7 +32,7 @@ package mechanics.classes
 		
 		public function GameClass() { }
 		
-		public function getPrimarySecondaryStat(chr: Character, stat: String): uint {
+		public function getStat(chr: Character, stat: String): uint {
 			var determiningStat: String;
 			var statToReturn: uint;
 			
@@ -62,11 +61,11 @@ package mechanics.classes
 			return statToReturn;
 		}
 		
-		public function attack(weaponDamage: uint, primaryStat: uint): uint {
+		public function attack(weaponDamage: uint, primaryStat: uint): int {
 			return weaponDamage + primaryStat;
 		}
 		
-		public function attackTech(techMultiplier: uint, weaponDamage: uint, primaryStat: uint): uint {
+		public function attackTech(techMultiplier: uint, weaponDamage: uint, primaryStat: uint): int {
 			return (weaponDamage + primaryStat) * techMultiplier;
 		}
 		
@@ -90,7 +89,7 @@ package mechanics.classes
 					break;
 			}
 			
-			return new EnemyClass();
+			return new Enemy();
 		}
 		
 		public function getName(): String {
@@ -101,9 +100,11 @@ package mechanics.classes
 			chr.setStrength(baseStr);
 			chr.setAgility(baseAgl);
 			chr.setIntelligence(baseInt);
-			chr.setHp(baseHp);
-			chr.setTp(baseTp);
-			chr.setTpRecovery(Math.ceil(chr.getTp() / chr.getIntelligence()));
+			chr.setMaxHp(baseHp);
+			chr.setMaxTp(baseTp);
+			chr.setCurrentHp(baseHp);
+			chr.setCurrentTp(baseTp);
+			chr.setTpRecovery(Math.ceil(chr.getMaxTp() / chr.getIntelligence()));
 		}
 		
 		public function getBaseStrength(): uint {

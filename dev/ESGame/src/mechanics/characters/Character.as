@@ -5,7 +5,7 @@ package mechanics.characters
 	import mechanics.items.Weapon;
 	import mechanics.items.Accessory;
 	import mechanics.items.Item;
-	import mechanics.LevelUpper;
+	import mechanics.battle.LevelUpper;
 	/**
 	 * ...
 	 * @author Jason Bolanos & Matt Fisher
@@ -19,8 +19,10 @@ package mechanics.characters
 		protected var _strength: uint;
 		protected var _agility: uint;
 		protected var _intelligence: uint;
-		protected var _hp: uint;
-		protected var _tp: uint;
+		protected var _maxhp: uint;
+		protected var _maxtp: uint;
+		protected var _currhp: int;
+		protected var _currtp: int;
 		protected var _tpRecovery: uint;
 		
 		protected var _weapon: Weapon;
@@ -36,9 +38,9 @@ package mechanics.characters
 			this._strength = str;
 			this._agility = agl;
 			this._intelligence = intl;
-			this._hp = hp;
-			this._tp = tp;
-			this._tpRecovery = Math.ceil(this._tp / this._intelligence);
+			this._maxhp = this._currhp = hp;
+			this._maxtp = this._currtp = tp;
+			this._tpRecovery = Math.ceil(this._maxtp / this._intelligence);
 			
 			_items = new Vector.<Item>(5);
 			_items.fixed = true;
@@ -64,12 +66,20 @@ package mechanics.characters
 			return this._intelligence;
 		}
 		
-		public function getHp(): uint {
-			return this._hp;
+		public function getMaxHp(): uint {
+			return this._maxhp;
 		}
 		
-		public function getTp(): uint {
-			return this._tp;
+		public function getMaxTp(): uint {
+			return this._maxtp;
+		}
+		
+		public function getCurrentHp(): int {
+			return this._currhp;
+		}
+		
+		public function getCurrentTp(): int {
+			return this._currtp;
 		}
 		
 		public function getTpRecovery(): uint {
@@ -104,12 +114,32 @@ package mechanics.characters
 			this._intelligence = newInt;
 		}
 		
-		public function setHp(newHP: uint): void {
-			this._hp = newHP;
+		public function setMaxHp(newHP: uint): void {
+			this._maxhp = newHP;
 		}
 		
-		public function setTp(newTP: uint): void {
-			this._tp = newTP;
+		public function setMaxTp(newTP: uint): void {
+			this._maxtp = newTP;
+		}
+		
+		public function setCurrentHp(newHP: int): void {
+			this._currhp = newHP;
+			if (this._currhp < 0) {
+				this._currhp = 0;
+			}
+			if (this._currhp > this._maxhp) {
+				this._currhp = this._maxhp;
+			}
+		}
+		
+		public function setCurrentTp(newTP: int): void {
+			this._currtp = newTP;
+			if (this._currtp < 0) {
+				this._currtp = 0;
+			}
+			if (this._currtp > this._maxtp) {
+				this._currtp = this._maxtp;
+			}
 		}
 		
 		public function setTpRecovery(newTPRecovery: uint): void {

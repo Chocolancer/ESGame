@@ -15,10 +15,10 @@ package globals
 		public function EquipmentCollection() 
 		{
 			//WEAPONS
-			weaponCollection.Orichalcon = new Weapon("Orichalcon", "A long-handled weapon made of an otherworldly alloy impervious to rust. Not even the harbinger knows its true purpose.", 10, 25);
+			weaponCollection.Orichalcon = new Weapon("Orichalcon", "A long-handled weapon made of an otherworldly alloy impervious to rust. Not even the harbinger knows its true purpose.", 10, 15);
 			
 			//ARMOR
-			armorCollection.TravellingClothes = new Armor("Travelling Clothes", "A comfortable, airy set of clothes padded with leather underneath for light protection. Covers a good amount of the body.", 15);
+			armorCollection.TravellingClothes = new Armor("Travelling Clothes", "A comfortable, airy set of clothes padded with leather underneath for light protection. Covers a good amount of the body.", 5);
 			
 			//ACCESSORIES
 			

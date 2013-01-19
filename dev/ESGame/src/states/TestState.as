@@ -1,8 +1,7 @@
 package states
 {
 	import mechanics.characters.Character;
-	import mechanics.BattleManager;
-	import mechanics.LevelUpper;
+	import mechanics.battle.*;
 	import globals.EquipmentCollection;
 	import org.flixel.*;
 	import ui.*;
@@ -11,6 +10,8 @@ package states
 	{
 		private var sampleCharacter: Character;
 		private var enemyCharacter: Character;
+		private var bsampleCharacter: BattleCharacter;
+		private var benemyCharacter: BattleCharacter;
 		private var battleManager: BattleManager;
 		private var equipmentCollection: EquipmentCollection;
 		private var text1: FlxText;
@@ -32,7 +33,7 @@ package states
 			levelupButton = new FlxButton(0, 60, "Levelup", levelup);
 			resetButton = new FlxButton(0, 80, "Reset", reset);
 			
-			sampleCharacter = new Character("TestCharacter", "Soldier");
+			sampleCharacter = new Character("TestCharacter", "Thaumaturge");
 			sampleCharacter.getClass().setBaseStats(sampleCharacter);
 			sampleCharacter.setWeapon(equipmentCollection.weaponCollection.Orichalcon);
 			sampleCharacter.setArmor(equipmentCollection.armorCollection.TravellingClothes);
@@ -40,6 +41,9 @@ package states
 			enemyCharacter = new Character("EnemyCharacter", "Enemy", 5, 5, 5, 1000, 20);
 			enemyCharacter.setWeapon(equipmentCollection.weaponCollection.Orichalcon);
 			enemyCharacter.setArmor(equipmentCollection.armorCollection.TravellingClothes);
+			
+			bsampleCharacter = new BattleCharacter(sampleCharacter);
+			benemyCharacter = new BattleCharacter(enemyCharacter);
 			
 			
 			add(text1);
@@ -51,13 +55,13 @@ package states
 		}
 		
 		public function attack(): void {
-			text1.text = "You attack for " + battleManager.startBattleStep(sampleCharacter, enemyCharacter) + " damage! Enemy HP: " + enemyCharacter.getHp();
-			text2.text = "Enemy attacks for " + battleManager.startBattleStep(enemyCharacter, sampleCharacter) + " damage! Your HP: " + sampleCharacter.getHp();
+			text1.text = "You attack for " + battleManager.startBattleStep(bsampleCharacter, benemyCharacter) + " damage! Enemy HP: " + enemyCharacter.getCurrentHp();
+			text2.text = "Enemy attacks for " + battleManager.startBattleStep(benemyCharacter, bsampleCharacter) + " damage! Your HP: " + sampleCharacter.getCurrentHp();
 		}
 		
 		public function levelup(): void {
 			LevelUpper.levelUp(sampleCharacter);
-			text3.text = "Strength: " + sampleCharacter.getStrength() + " Agility: " + sampleCharacter.getAgility() + " Intelligence: " + sampleCharacter.getIntelligence() + " HP: " + sampleCharacter.getHp() + " TP: " + sampleCharacter.getTp() + " TP Recover: " + sampleCharacter.getTpRecovery();
+			text3.text = "Strength: " + sampleCharacter.getStrength() + " Agility: " + sampleCharacter.getAgility() + " Intelligence: " + sampleCharacter.getIntelligence() + " HP: " + sampleCharacter.getMaxHp() + " TP: " + sampleCharacter.getMaxTp() + " TP Recover: " + sampleCharacter.getTpRecovery();
 		}
 		
 		public function reset(): void {

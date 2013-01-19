@@ -11,7 +11,7 @@ package mechanics.classes
 		{
 			this.className = "Thaumaturge";
 			
-			this.primaryStat = "Intelligence";
+			//this.primaryStat = "Intelligence";
 			
 			this.baseStr = 5;
 			this.baseAgl = 15;
