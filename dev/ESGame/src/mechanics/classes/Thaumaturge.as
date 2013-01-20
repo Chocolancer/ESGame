@@ -9,22 +9,22 @@ package mechanics.classes
 		
 		public function Thaumaturge() 
 		{
-			this.className = "Thaumaturge";
+			this._className = "Thaumaturge";
 			
 			//this.primaryStat = "Intelligence";
 			
-			this.baseStr = 5;
-			this.baseAgl = 15;
-			this.baseInt = 20;
-			this.baseHp = 2 * this.baseStr;
-			this.baseTp = 8 * this.baseInt;
+			this._baseStr = 5;
+			this._baseAgl = 15;
+			this._baseInt = 20;
+			this._baseHp = 2 * this._baseStr;
+			this._baseTp = 8 * this._baseInt;
 			
-			this.chanceStrIncrease = 10;
-			this.chanceAglIncrease = 30;
-			this.chanceIntIncrease = 60;
+			this._chanceStrIncrease = 10;
+			this._chanceAglIncrease = 30;
+			this._chanceIntIncrease = 60;
 			
-			this.chanceHpIncrease = 30;
-			this.chanceTpIncrease = 70;
+			this._chanceHpIncrease = 30;
+			this._chanceTpIncrease = 70;
 		}
 		
 	}

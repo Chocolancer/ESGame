@@ -1,6 +1,6 @@
 package states
 {
-	import mechanics.characters.Character;
+	import mechanics.characters.*;
 	import mechanics.battle.*;
 	import globals.EquipmentCollection;
 	import org.flixel.*;
@@ -8,12 +8,11 @@ package states
  
 	public class TestState extends FlxState
 	{
-		private var sampleCharacter: Character;
-		private var enemyCharacter: Character;
-		private var bsampleCharacter: BattleCharacter;
-		private var benemyCharacter: BattleCharacter;
+		private var sampleCharacter: PlayableCharacter;
+		private var enemyCharacter: EnemyCharacter;
 		private var battleManager: BattleManager;
 		private var equipmentCollection: EquipmentCollection;
+		
 		private var text1: FlxText;
 		private var text2: FlxText;
 		private var text3: FlxText;
@@ -33,19 +32,15 @@ package states
 			levelupButton = new FlxButton(0, 60, "Levelup", levelup);
 			resetButton = new FlxButton(0, 80, "Reset", reset);
 			
-			sampleCharacter = new Character("TestCharacter", "Thaumaturge");
-			sampleCharacter.getClass().setBaseStats(sampleCharacter);
-			sampleCharacter.setWeapon(equipmentCollection.weaponCollection.Orichalcon);
-			sampleCharacter.setArmor(equipmentCollection.armorCollection.TravellingClothes);
+			sampleCharacter = new PlayableCharacter("You", null, "Soldier", 5, 5, 5, 5, 5);
+			sampleCharacter.classType.setBaseStats(sampleCharacter);
+			sampleCharacter.weapon = equipmentCollection.weaponCollection.Orichalcon;
+			sampleCharacter.armor = equipmentCollection.armorCollection.LucidGarb;
 			
-			enemyCharacter = new Character("EnemyCharacter", "Enemy", 5, 5, 5, 1000, 20);
-			enemyCharacter.setWeapon(equipmentCollection.weaponCollection.Orichalcon);
-			enemyCharacter.setArmor(equipmentCollection.armorCollection.TravellingClothes);
-			
-			bsampleCharacter = new BattleCharacter(sampleCharacter);
-			benemyCharacter = new BattleCharacter(enemyCharacter);
-			
-			
+			enemyCharacter = new EnemyCharacter("Dummy Goblin", null, 20, 20, 20, 1000, 200);
+			enemyCharacter.weapon = equipmentCollection.weaponCollection.BGlaive;
+			enemyCharacter.armor = equipmentCollection.armorCollection.TravellingClothes;
+
 			add(text1);
 			add(text2);
 			add(text3);
@@ -55,18 +50,18 @@ package states
 		}
 		
 		public function attack(): void {
-			text1.text = "You attack for " + battleManager.startBattleStep(bsampleCharacter, benemyCharacter) + " damage! Enemy HP: " + enemyCharacter.getCurrentHp();
-			text2.text = "Enemy attacks for " + battleManager.startBattleStep(benemyCharacter, bsampleCharacter) + " damage! Your HP: " + sampleCharacter.getCurrentHp();
+			text1.text = sampleCharacter.characterName + " attacks for " + battleManager.startBattleStep(sampleCharacter, enemyCharacter) + " damage! Enemy HP: " + enemyCharacter.currhp + " / " + enemyCharacter.maxhp;
+			text2.text = enemyCharacter.characterName + " attacks for " + battleManager.startBattleStep(enemyCharacter, sampleCharacter) + " damage! Your HP: " + sampleCharacter.currhp + " / " + sampleCharacter.maxhp;
 		}
 		
 		public function levelup(): void {
 			LevelUpper.levelUp(sampleCharacter);
-			text3.text = "Strength: " + sampleCharacter.getStrength() + " Agility: " + sampleCharacter.getAgility() + " Intelligence: " + sampleCharacter.getIntelligence() + " HP: " + sampleCharacter.getMaxHp() + " TP: " + sampleCharacter.getMaxTp() + " TP Recover: " + sampleCharacter.getTpRecovery();
+			text3.text = "Strength: " + sampleCharacter.strength + " Agility: " + sampleCharacter.agility + " Intelligence: " + sampleCharacter.intelligence + " HP: " + sampleCharacter.maxhp + " TP: " + sampleCharacter.maxtp + " TP Recover: " + sampleCharacter.tpRecovery;
 		}
 		
 		public function reset(): void {
-			sampleCharacter.getClass().setBaseStats(sampleCharacter);
-			enemyCharacter = new Character("EnemyCharacter", "Enemy", 20, 20, 20, 1000, 20);
+			sampleCharacter.classType.setBaseStats(sampleCharacter);
+			enemyCharacter = new EnemyCharacter("Dummy Goblin", null, 20, 20, 20, 1000, 200);
 		}
  
 		override public function update():void

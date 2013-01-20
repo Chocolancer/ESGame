@@ -1,6 +1,6 @@
 package mechanics.classes 
 {
-	import mechanics.characters.Character;
+	import mechanics.characters.BattleCharacter;
 	/**
 	 * ...
 	 * @author Jason Bolanos & Matt Fisher
@@ -11,50 +11,50 @@ package mechanics.classes
 		public static const PRIMARY_STAT: String = "Primary";
 		public static const SECONDARY_STAT: String = "Secondary";
 		
-		protected var className: String;
+		protected var _className: String;
 		
-		protected var primaryStat: String;
-		protected var secondaryStat: String;
+		protected var _primaryStat: String;
+		protected var _secondaryStat: String;
 		
 		//base stats
-		protected var baseStr: uint;
-		protected var baseAgl: uint;
-		protected var baseInt: uint;
-		protected var baseHp: uint;
-		protected var baseTp: uint;
+		protected var _baseStr: uint;
+		protected var _baseAgl: uint;
+		protected var _baseInt: uint;
+		protected var _baseHp: uint;
+		protected var _baseTp: uint;
 		
 		//rates; must be between 0 to 100
-		protected var chanceStrIncrease: uint;
-		protected var chanceAglIncrease: uint;
-		protected var chanceIntIncrease: uint;
-		protected var chanceHpIncrease: uint;
-		protected var chanceTpIncrease: uint;
+		protected var _chanceStrIncrease: uint;
+		protected var _chanceAglIncrease: uint;
+		protected var _chanceIntIncrease: uint;
+		protected var _chanceHpIncrease: uint;
+		protected var _chanceTpIncrease: uint;
 		
 		public function GameClass() { }
 		
-		public function getStat(chr: Character, stat: String): uint {
+		public function getStat(chr: BattleCharacter, stat: String): uint {
 			var determiningStat: String;
 			var statToReturn: uint;
 			
 			//check what the function should be looking for
 			switch (stat) {
 				case GameClass.PRIMARY_STAT:
-					determiningStat = this.primaryStat;
+					determiningStat = this._primaryStat;
 					break;
 				case GameClass.SECONDARY_STAT:
-					determiningStat = this.secondaryStat;
+					determiningStat = this._secondaryStat;
 			}
 			
 			//then get it
 			switch (determiningStat) {
 				case "Strength":
-					statToReturn = chr.getStrength();
+					statToReturn = chr.strength;
 					break;
 				case "Agility":
-					statToReturn = chr.getAgility();
+					statToReturn = chr.agility;
 					break;
 				case "Intelligence":
-					statToReturn = chr.getIntelligence();
+					statToReturn = chr.intelligence;
 					break;
 			}
 			
@@ -89,62 +89,48 @@ package mechanics.classes
 					break;
 			}
 			
-			return new Enemy();
+			return new EmptyClass();
 		}
 		
-		public function getName(): String {
-			return className;
+		public function setBaseStats(chr: BattleCharacter): void {
+			chr.strength = _baseStr;
+			chr.agility = _baseAgl;
+			chr.intelligence = _baseInt;
+			chr.maxhp = _baseHp;
+			chr.maxtp = _baseTp;
+			chr.currhp = _baseHp;
+			chr.currtp = _baseTp;
+			chr.tpRecovery = Math.ceil(chr.maxtp / chr.intelligence);
 		}
 		
-		public function setBaseStats(chr: Character): void {
-			chr.setStrength(baseStr);
-			chr.setAgility(baseAgl);
-			chr.setIntelligence(baseInt);
-			chr.setMaxHp(baseHp);
-			chr.setMaxTp(baseTp);
-			chr.setCurrentHp(baseHp);
-			chr.setCurrentTp(baseTp);
-			chr.setTpRecovery(Math.ceil(chr.getMaxTp() / chr.getIntelligence()));
+		public function get className():String 
+		{
+			return _className;
 		}
 		
-		public function getBaseStrength(): uint {
-			return this.baseStr;
+		public function get chanceStrIncrease():uint 
+		{
+			return _chanceStrIncrease;
 		}
 		
-		public function getBaseAgility(): uint {
-			return this.baseAgl;
+		public function get chanceAglIncrease():uint 
+		{
+			return _chanceAglIncrease;
 		}
 		
-		public function getBaseIntelligence(): uint {
-			return this.baseInt;
+		public function get chanceIntIncrease():uint 
+		{
+			return _chanceIntIncrease;
 		}
 		
-		public function getBaseHp(): uint {
-			return this.baseHp;
+		public function get chanceHpIncrease():uint 
+		{
+			return _chanceHpIncrease;
 		}
 		
-		public function getBaseTp(): uint {
-			return this.baseTp;
-		}
-		
-		public function getChanceStrIncrease(): uint {
-			return this.chanceStrIncrease;
-		}
-		
-		public function getChanceAglIncrease(): uint {
-			return this.chanceAglIncrease;
-		}
-		
-		public function getChanceIntIncrease(): uint {
-			return this.chanceIntIncrease;
-		}
-		
-		public function getChanceHpIncrease(): uint {
-			return this.chanceHpIncrease;
-		}
-		
-		public function getChanceTpIncrease(): uint {
-			return this.chanceTpIncrease;
+		public function get chanceTpIncrease():uint 
+		{
+			return _chanceTpIncrease;
 		}
 	}
 

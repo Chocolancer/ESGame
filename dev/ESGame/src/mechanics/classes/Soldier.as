@@ -9,22 +9,22 @@ package mechanics.classes
 		
 		public function Soldier() 
 		{
-			this.className = "Soldier";
+			this._className = "Soldier";
 			
-			this.primaryStat = "Strength";
+			this._primaryStat = "Strength";
 			
-			this.baseStr = 20;
-			this.baseAgl = 15;
-			this.baseInt = 5;
-			this.baseHp = 8 * this.baseStr;
-			this.baseTp = 2 * this.baseInt;
+			this._baseStr = 20;
+			this._baseAgl = 15;
+			this._baseInt = 5;
+			this._baseHp = 8 * this._baseStr;
+			this._baseTp = 2 * this._baseInt;
 			
-			this.chanceStrIncrease = 60;
-			this.chanceAglIncrease = 30;
-			this.chanceIntIncrease = 10;
+			this._chanceStrIncrease = 60;
+			this._chanceAglIncrease = 30;
+			this._chanceIntIncrease = 10;
 			
-			this.chanceHpIncrease = 70;
-			this.chanceTpIncrease = 30;
+			this._chanceHpIncrease = 70;
+			this._chanceTpIncrease = 30;
 		}
 	}
 

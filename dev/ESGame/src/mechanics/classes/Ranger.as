@@ -9,23 +9,23 @@ package mechanics.classes
 		
 		public function Ranger() 
 		{
-			this.className = "Ranger";
+			this._className = "Ranger";
 			
-			this.primaryStat = "Strength";
-			this.secondaryStat = "Agility";
+			this._primaryStat = "Strength";
+			this._secondaryStat = "Agility";
 			
-			this.baseStr = 15;
-			this.baseAgl = 15;
-			this.baseInt = 10;
-			this.baseHp = 6 * this.baseStr;
-			this.baseTp = 4 * this.baseInt;
+			this._baseStr = 15;
+			this._baseAgl = 15;
+			this._baseInt = 10;
+			this._baseHp = 6 * this._baseStr;
+			this._baseTp = 4 * this._baseInt;
 			
-			this.chanceStrIncrease = 20;
-			this.chanceAglIncrease = 70;
-			this.chanceIntIncrease = 10;
+			this._chanceStrIncrease = 20;
+			this._chanceAglIncrease = 70;
+			this._chanceIntIncrease = 10;
 			
-			this.chanceHpIncrease = 60;
-			this.chanceTpIncrease = 40;
+			this._chanceHpIncrease = 60;
+			this._chanceTpIncrease = 40;
 		}
 		
 	}

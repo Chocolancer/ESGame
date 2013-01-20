@@ -14,14 +14,14 @@ package mechanics.characters
 			
 		}
 		
-		public function get members():Vector.<Character> 
+		public function getParty(): Vector.<Character> 
 		{
 			return _members;
 		}
 		
-		public function set members(value:Vector.<Character>):void 
+		public function setPartyMembers (value: Vector.<Character>): void 
 		{
-			_members = value;
+			
 		}
 		
 		

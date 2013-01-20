@@ -9,23 +9,23 @@ package mechanics.classes
 		
 		public function Assassin() 
 		{
-			this.className = "Assassin";
+			this._className = "Assassin";
 			
-			this.primaryStat = "Intelligence";
-			this.secondaryStat = "Agility";
+			this._primaryStat = "Intelligence";
+			this._secondaryStat = "Agility";
 			
-			this.baseStr = 10;
-			this.baseAgl = 15;
-			this.baseInt = 15;
-			this.baseHp = 4 * this.baseStr;
-			this.baseTp = 6 * this.baseInt;
+			this._baseStr = 10;
+			this._baseAgl = 15;
+			this._baseInt = 15;
+			this._baseHp = 4 * this._baseStr;
+			this._baseTp = 6 * this._baseInt;
 			
-			this.chanceStrIncrease = 10;
-			this.chanceAglIncrease = 70;
-			this.chanceIntIncrease = 20;
+			this._chanceStrIncrease = 10;
+			this._chanceAglIncrease = 70;
+			this._chanceIntIncrease = 20;
 			
-			this.chanceHpIncrease = 40;
-			this.chanceTpIncrease = 60;
+			this._chanceHpIncrease = 40;
+			this._chanceTpIncrease = 60;
 		}
 		
 	}

@@ -19,11 +19,11 @@ package mechanics.items
 		}
 		
 		public function getPhysicalDamage(): uint {
-			return this._minAttack + (Math.floor(Math.random() * this._maxAttack) - _minAttack);
+			return this._minAttack + Math.floor(Math.random() * (this._maxAttack - _minAttack));
 		}
 		
 		public function getElementalDamage(): uint {
-			return (this._minAttack + (Math.floor(Math.random() * this._maxAttack) - _minAttack)) * _element.getElementMultiplier();
+			return this._minAttack + (Math.floor(Math.random() * (this._maxAttack - _minAttack)) * _element.multiplier);
 		}
 	}
 

@@ -18,16 +18,19 @@ package mechanics.items
 			this._element = new Element(element, elementMultiplier);
 		}
 		
-		public function getElement(): Element {
-			return this._element;
-		}
-		
-		public function getDescription(): String {
-			return this._description;
-		}
-		
-		public function getName(): String {
+		public function get name():String 
+		{
 			return _name;
+		}
+		
+		public function get description():String 
+		{
+			return _description;
+		}
+		
+		public function get element():Element 
+		{
+			return _element;
 		}
 	}
 

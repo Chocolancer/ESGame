@@ -15,12 +15,14 @@ package mechanics.battle
 			this._multiplier = mult;
 		}
 		
-		public function getElementName(): String {
-			return this._elementName;
+		public function get elementName():String 
+		{
+			return _elementName;
 		}
 		
-		public function getElementMultiplier(): uint {
-			return this._multiplier;
+		public function get multiplier():uint 
+		{
+			return _multiplier;
 		}
 	}
 

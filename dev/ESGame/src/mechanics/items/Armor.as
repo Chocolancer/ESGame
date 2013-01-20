@@ -21,7 +21,7 @@ package mechanics.items
 		}
 		
 		public function getElementalDefense(): uint {
-			return this._defense * this._element.getElementMultiplier();
+			return this._defense * this._element.multiplier;
 		}
 	}
 
