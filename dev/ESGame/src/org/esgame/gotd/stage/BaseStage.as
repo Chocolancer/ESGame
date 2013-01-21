@@ -11,26 +11,25 @@ package org.esgame.gotd.stage
 	public class BaseStage extends FlxGroup
 	{
 		// the data of all the stages
-		public var data:StageData;
-		public var gfxdata:GfxData;
+		public var stagedata:StageData;
 		
-		// CSV files for each mapping for the floor, the interactibles, and the walls
+		// CSV files for the floor, the interactible objects, and the walls
 		public var floorCSV:Class;
-		public var interactiveCSV:Class;
 		public var wallCSV:Class;
+		public var interactiveCSV:Class;
 		
 		//the Tilemaps for the floor
 		public var floorMap:FlxTilemap;
 
-		//the Tilemap used to generate the interactive elements
-		public var interactiveMap:FlxTilemap;
-
 		//the Tilemap for the background
-		public var backgroundMap:FlxTilemap;
+		public var wallMap:FlxTilemap;
+		
+		// the Tilemap for the interactive objects
+		public var interactiveMap:FlxTilemap;
 		
 		// the player's starting position
-		public var playerX:int;
-		public var playerY:int;
+		public var playerStartX:int;
+		public var playerStartY:int;
 		
 		// the stage dimensions
 		public var stageWidth:int;
@@ -41,12 +40,11 @@ package org.esgame.gotd.stage
 		
 		public function BaseStage():void
 		{
-			data = new StageData();
-			gfxdata = new GfxData();
+			stagedata = new StageData();
 			setData();
 			createFloorMap();
-			createBackgroundMap();
-			createInteractiveElements();
+			createWallMap();
+			createInteractiveMap();
 			setDimensions();
 			exists = true;
 		}
@@ -54,107 +52,53 @@ package org.esgame.gotd.stage
 		//this assigns the data to the variables used in map creation. Override it to generate different stages
 		public function setData():void
 		{
-			floorCSV = data.floor1;
-			interactiveCSV = data.interact1;
-			backgroundCSV = data.background1;
-			name = "Base Stage";
+			floorCSV = stagedata.floor1;
+			wallCSV = stagedata.walls1;
+			stageName = "Base Stage";
 		}
 		
 		//this just loads the floorMap from whatever you set floorCSV to
 		public function createFloorMap():void
 		{
 			floorMap = recycle(FlxTilemap) as FlxTilemap;
-			floorMap.loadMap(new floorCSV, gfxdata.tilesPNG, 16, 16, 0, 0, 1, 1);
+			floorMap.loadMap(new floorCSV, Assets.FLOORS_TILE, 16, 16);
 		}
 
 		//this just loads the backgroundMap from whatever you set backgroundCSV to
-		public function createBackgroundMap():void
+		public function createWallMap():void
 		{
-			backgroundMap = recycle(FlxTilemap) as FlxTilemap;
-			backgroundMap.loadMap(new backgroundCSV, gfxdata.backgroundPNG, 32, 32, 0, 0, 1, 8);
-			backgroundMap.scrollFactor.x = 0.5;
-			backgroundMap.scrollFactor.y = 0.5;
+			wallMap = recycle(FlxTilemap) as FlxTilemap;
+			wallMap.loadMap(new wallCSV, Assets.WALLS_TILE, 16, 16);
 		}
 		
-		//this runs a for loop that checks a map based on interactiveCSV
-		//and creates an interactive element in it's respective FlxGroup based on the CSV data
-		public function createInteractiveElements():void
+		//this just loads the interactiveMap from whatever you set interactiveCSV to
+		public function createInteractiveMap():void
 		{
 			interactiveMap = recycle(FlxTilemap) as FlxTilemap;
-			interactiveMap.loadMap(new interactiveCSV, gfxdata.interactPNG, 16, 16);
-
-			//initialize the interactive element FlxGroups
-			springs = recycle(FlxGroup) as FlxGroup;
-			spikes = recycle(FlxGroup) as FlxGroup;
-			magwalls = recycle(FlxGroup) as FlxGroup;
-			stageGoal = recycle(FlxGroup) as FlxGroup;
-			crumblers = recycle(FlxGroup) as FlxGroup;
-
+			
+			// FLOORS_TILE does not matter, it is just used as a placeholder
+			interactiveMap.loadMap(new interactiveCSV, Assets.FLOORS_TILE, 16, 16);
+			
 			//scan the y axis
 			for (var ty:int = 0; ty < interactiveMap.heightInTiles; ty++)
 			{
 				//scan the x axis
 				for (var tx:int = 0; tx < interactiveMap.widthInTiles; tx++)
-				{
+				{			
 					//check for the player start tile and store the values so the PlayState knows where to place the player on startup
 					if (interactiveMap.getTile(tx, ty) == 1)
 					{
 						playerStartX = tx*16;
 						playerStartY = ty*16;
 					}
-
-					/*
-					//check for springs and add them to the spring FlxGroup
-					if (interactiveMap.getTile(tx, ty) == 4)
-					{
-						//this recycles the springs instead of adding new ones, hopefully saving on memory usage
-						var tempSpring:Spring = recycle(Spring) as Spring;
-						tempSpring.reset(tx * 16, ty * 16);
-						springs.add(tempSpring);
-					}
-
-					//check for MagWalls and add them to the magwall FlxGroup
-					if (interactiveMap.getTile(tx, ty) > 7 && interactiveMap.getTile(tx, ty) <12)
-					{
-						var tempMagwall:Magwall = recycle(Magwall) as Magwall;
-						tempMagwall.reset(tx * 16, ty * 16);
-						tempMagwall.setAngle(interactiveMap.getTile(tx, ty));
-						magwalls.add(tempMagwall);
-					}
-
-					//check for spikes and add them to the spike FlxGroup
-					if (interactiveMap.getTile(tx, ty) > 11 && interactiveMap.getTile(tx, ty) <16)
-					{
-						var tempSpike:Spike = recycle(Spike) as Spike;
-						tempSpike.reset(tx * 16, ty * 16);
-						tempSpike.setAngle(interactiveMap.getTile(tx, ty));
-						spikes.add(tempSpike);
-					}
-
-					//check for goal tiles and add them to the stageGoal FlxGroup
-					if (interactiveMap.getTile(tx, ty) == 36)
-					{
-						var tempGoal:Goal = recycle(Goal) as Goal;
-						tempGoal.reset(tx * 16, (ty * 16)+8);
-						stageGoal.add(tempGoal);
-					}
-
-					//check for crumblers and add them to the crumblers FlxGroup
-					if (interactiveMap.getTile(tx, ty) == 16)
-					{
-						var tempCrumbler:Crumbler = recycle(Crumbler) as Crumbler;
-						tempCrumbler.reset(tx * 16, ty * 16);
-						crumblers.add(tempCrumbler);
-					}
-					*/
 				}
 			}
 		}
 		
 		public function setDimensions():void
 		{
-			width = floorMap.width;
-			height = floorMap.height;
+			stageWidth = floorMap.width;
+			stageHeight = floorMap.height;
 		}
 	}
 }
