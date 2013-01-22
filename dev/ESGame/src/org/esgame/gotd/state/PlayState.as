@@ -80,7 +80,7 @@ package  org.esgame.gotd.state
 			add(stage.floorMap);
 			add(stage.wallMap);
 			
-			player.reset(stage.playerStartX, stage.playerStartY);
+			player.reset(stage.stageWidth / 2, stage.stageHeight / 2);
 			FlxG.worldBounds.make(0, 0, stage.stageWidth, stage.stageHeight);
 			add(player);
 			

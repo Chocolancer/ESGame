@@ -9,7 +9,7 @@ package org.esgame.gotd.entity
 	 */
 	public class Player extends FlxSprite
 	{
-			public static const RUNSPEED:uint = 120; // the max speed that the player can run at
+			public static const RUNSPEED:uint = 100; // the max speed that the player can run at
 			
 			public static const SPRITE_SIZE:FlxPoint = new FlxPoint(16, 18); // size in pixels
 		

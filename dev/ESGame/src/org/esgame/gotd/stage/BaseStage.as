@@ -75,24 +75,8 @@ package org.esgame.gotd.stage
 		public function createInteractiveMap():void
 		{
 			interactiveMap = recycle(FlxTilemap) as FlxTilemap;
-			
 			// FLOORS_TILE does not matter, it is just used as a placeholder
 			interactiveMap.loadMap(new interactiveCSV, Assets.FLOORS_TILE, 16, 16);
-			
-			//scan the y axis
-			for (var ty:int = 0; ty < interactiveMap.heightInTiles; ty++)
-			{
-				//scan the x axis
-				for (var tx:int = 0; tx < interactiveMap.widthInTiles; tx++)
-				{			
-					//check for the player start tile and store the values so the PlayState knows where to place the player on startup
-					if (interactiveMap.getTile(tx, ty) == 1)
-					{
-						playerStartX = tx*16;
-						playerStartY = ty*16;
-					}
-				}
-			}
 		}
 		
 		public function setDimensions():void
