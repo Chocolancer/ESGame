@@ -1,7 +1,8 @@
 package  org.esgame.gotd.state
 {
+	import org.esgame.gotd.room.BaseRoom;
 	import org.flixel.*
-	import org.esgame.gotd.stage.*;
+	import org.esgame.gotd.room.*;
 	import org.esgame.gotd.entity.Player;
 	
 	/**
@@ -15,77 +16,80 @@ package  org.esgame.gotd.state
 		public var s1:Class = Room1;
 		public var s2:Class = Room2;
 		
-		//make an array out of the Class references of the stages
-		public static var stages:Array;
+		//make an array out of the Class references of the rooms
+		public static var rooms:Array;
 		
-		//make one stage object that the stages can be loaded into
-		public var stage:BaseStage;
+		//make one room object that the rooms can be loaded into
+		private var _currentRoom:BaseRoom;
 		
 		//make the player object
-		public var player:Player;
+		public var player:Player = new Player;
 		
-		//set the stage counter at 0
-		public static var stageCount:int = 0;
-		
-		//reset boolean, might be a better way to do this
-		public var reset:Boolean = false;
-		
-		public function PlayState() 
-		{
-			player = new Player();
-		}
+		//set the room counter at 0
+		private var _currentRoomNumber:int = 0;
 		
 		override public function create():void
 		{
-			stages = [s1, s2];
+			rooms = [s1, s2];
 			FlxG.bgColor = 0xff000000;
 			
-			makeStage();
+			makeRoom();
 			
-			FlxG.log(stage.stageName);
+			FlxG.log(_currentRoom.roomNumber);
 			
-			FlxG.worldBounds = new FlxRect(0, 0, stage.stageWidth, stage.stageHeight);
+			FlxG.worldBounds = new FlxRect(0, 0, _currentRoom.roomWidth, _currentRoom.roomHeight);
 			
-			FlxG.camera.setBounds(0, 0, stage.stageWidth, stage.stageHeight);
+			FlxG.camera.setBounds(0, 0, _currentRoom.roomWidth, _currentRoom.roomHeight);
 			FlxG.camera.follow(player, FlxCamera.STYLE_TOPDOWN);
 		}
 		
 		//check for collisions between objects and all that jazz
 		override public function update():void
-		{
+		{	
 			super.update();
 			
 			// make the player collide with walls
-			FlxG.collide(player, stage.wallMap);
-		}
-		
-		//load the next stage
-		public function nextStage():void
-		{
-			FlxG.resetState();
-			stageCount++;
-			if (stageCount > (stages.length - 1))
+			FlxG.collide(player, _currentRoom.wallMap);
+			
+			if (FlxG.keys.ONE)
 			{
-				stageCount = 0;
-			} else {
-				makeStage();
+				changeRooms(1);
+			}
+			
+			if (FlxG.keys.TWO)
+			{
+				changeRooms(2);
 			}
 		}
 		
-		//generate the stage
-		public function makeStage():void
+		// change to another room
+		public function changeRooms(whichRoom:uint):void
 		{
-			stage = new stages[stageCount];
 			
-			add(stage.floorMap);
-			add(stage.wallMap);
+			_currentRoomNumber = whichRoom - 1;
 			
-			player.reset(stage.stageWidth / 2, stage.stageHeight / 2);
-			FlxG.worldBounds.make(0, 0, stage.stageWidth, stage.stageHeight);
+			// remove old objects from the view
+			remove(_currentRoom.floorMap);
+			remove(_currentRoom.wallMap);
+			remove(player);
+			
+			// generate the new room
+			makeRoom();
+		}
+		
+		//generate the room
+		public function makeRoom():void
+		{
+			_currentRoom = new rooms[_currentRoomNumber];
+			
+			add(_currentRoom.floorMap);
+			add(_currentRoom.wallMap);
+			
+			player.reset(_currentRoom.roomWidth / 2, _currentRoom.roomHeight / 2);
+			FlxG.worldBounds.make(0, 0, _currentRoom.roomWidth, _currentRoom.roomHeight);
 			add(player);
 			
 			FlxG.camera.flash(0xff000000, 1, null, false);
-			
 		}
 		
 	}
