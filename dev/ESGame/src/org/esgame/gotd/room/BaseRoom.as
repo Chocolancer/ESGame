@@ -62,14 +62,14 @@ package org.esgame.gotd.room
 		public function createFloorMap():void
 		{
 			floorMap = recycle(FlxTilemap) as FlxTilemap;
-			floorMap.loadMap(new floorCSV, Assets.FLOORS_TILE, 16, 16);
+			floorMap.loadMap(new floorCSV, Assets.FLOORS_TILE, RoomData.ROOM_TILE_WIDTH, RoomData.ROOM_TILE_HEIGHT);
 		}
 
 		//this just loads the backgroundMap from whatever you set backgroundCSV to
 		public function createWallMap():void
 		{
 			wallMap = recycle(FlxTilemap) as FlxTilemap;
-			wallMap.loadMap(new wallCSV, Assets.WALLS_TILE, 16, 16);
+			wallMap.loadMap(new wallCSV, Assets.WALLS_TILE, RoomData.ROOM_TILE_WIDTH, RoomData.ROOM_TILE_HEIGHT);
 		}
 		
 		//this just loads the doorsMap from whatever you set interactiveCSV to
@@ -77,7 +77,7 @@ package org.esgame.gotd.room
 		{
 			doorsMap = recycle(FlxTilemap) as FlxTilemap;
 			// FLOORS_TILE does not matter, it is just used as a placeholder
-			doorsMap.loadMap(new doorsCSV, Assets.FLOORS_TILE, 16, 16);
+			doorsMap.loadMap(new doorsCSV, Assets.FLOORS_TILE, RoomData.ROOM_TILE_WIDTH, RoomData.ROOM_TILE_HEIGHT);
 		}
 		
 		public function setDimensions():void

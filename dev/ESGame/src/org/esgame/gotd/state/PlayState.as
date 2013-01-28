@@ -4,6 +4,7 @@ package  org.esgame.gotd.state
 	import org.flixel.*
 	import org.esgame.gotd.room.*;
 	import org.esgame.gotd.entity.Player;
+	import org.esgame.gotd.assets.*;
 	
 	/**
 	 * ...
@@ -92,7 +93,21 @@ package  org.esgame.gotd.state
 			FlxG.camera.flash(0xff000000, 1, null, false);
 		}
 		
+		// retrieve the value of the tile the player is standing on
+		// from the current room's door map.
+		public function getDoorTile():int
+		{
+			// grab the position on the map where the player is
+			var playerPositionInTiles:FlxPoint = new FlxPoint(
+													player.getScreenXY().x / RoomData.ROOM_TILE_WIDTH,
+													player.getScreenXY().y / RoomData.ROOM_TILE_HEIGHT);
+			
+			// grab the value of the tile that the player is standing on
+			var tilePlayerIsStandingOn = _currentRoom
+											.doorsMap
+											.getTile(playerPositionInTiles.x, playerPositionInTiles.y);
+			
+			return tilePlayerIsStandingOn;
+		}
 	}
-	
-
 }
