@@ -52,14 +52,9 @@ package  org.esgame.gotd.state
 			// make the player collide with walls
 			FlxG.collide(player, _currentRoom.wallMap);
 			
-			if (FlxG.keys.ONE)
+			if (getDoorTile() != 0)
 			{
-				changeRooms(1);
-			}
-			
-			if (FlxG.keys.TWO)
-			{
-				changeRooms(2);
+				changeRooms(getDoorTile());
 			}
 		}
 		
@@ -99,14 +94,14 @@ package  org.esgame.gotd.state
 		{
 			// grab the position on the map where the player is
 			var playerPositionInTiles:FlxPoint = new FlxPoint(
-													player.getScreenXY().x / RoomData.ROOM_TILE_WIDTH,
-													player.getScreenXY().y / RoomData.ROOM_TILE_HEIGHT);
+													player.x / RoomData.ROOM_TILE_WIDTH,
+													player.y / RoomData.ROOM_TILE_HEIGHT);
 			
 			// grab the value of the tile that the player is standing on
-			var tilePlayerIsStandingOn = _currentRoom
+			var tilePlayerIsStandingOn:int = _currentRoom
 											.doorsMap
 											.getTile(playerPositionInTiles.x, playerPositionInTiles.y);
-			
+											
 			return tilePlayerIsStandingOn;
 		}
 	}
