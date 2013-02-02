@@ -1,7 +1,6 @@
 package states.abstract 
 {
-	import org.flixel.*;
-	import ui.*;
+	import org.flixel.FlxState;
 	/**
 	 * ...
 	 * @author Jason Bolanos & Matt Fisher

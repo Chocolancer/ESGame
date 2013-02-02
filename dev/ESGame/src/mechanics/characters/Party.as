@@ -1,32 +1,19 @@
 package mechanics.characters 
 {
+	import org.flixel.FlxGroup;
+	import mechanics.formations.Formation;
 	/**
 	 * ...
 	 * @author Jason Bolanos & Matt Fisher
 	 */
-	public class Party 
+	public class Party extends FlxGroup
 	{
-		private var _members: Vector.<Character>;
-		private var formationBonus
+		private var _formationBonus: Formation;
 		
-		public function Party() 
+		public function Party()
 		{
 			
 		}
-		
-		public function getParty(): Vector.<Character> 
-		{
-			return _members;
-		}
-		
-		public function setPartyMembers (value: Vector.<Character>): void 
-		{
-			
-		}
-		
-		
-		
-		
 	}
 
 }

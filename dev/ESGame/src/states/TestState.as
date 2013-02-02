@@ -8,6 +8,8 @@ package states
  
 	public class TestState extends FlxState
 	{
+		private var mainParty: Party;
+		private var enemyParty: Party;
 		private var sampleCharacter: PlayableCharacter;
 		private var enemyCharacter: EnemyCharacter;
 		private var battleManager: BattleManager;
@@ -50,6 +52,7 @@ package states
 		}
 		
 		public function attack(): void {
+			var battleOrder: Array = battleManager.getBattleOrder(mainParty, enemyParty);
 			text1.text = sampleCharacter.characterName + " attacks for " + battleManager.startBattleStep(sampleCharacter, enemyCharacter) + " damage! Enemy HP: " + enemyCharacter.currhp + " / " + enemyCharacter.maxhp;
 			text2.text = enemyCharacter.characterName + " attacks for " + battleManager.startBattleStep(enemyCharacter, sampleCharacter) + " damage! Your HP: " + sampleCharacter.currhp + " / " + sampleCharacter.maxhp;
 		}

@@ -1,5 +1,6 @@
 package mechanics.characters 
 {
+	import globals.EquipmentCollection;
 	import mechanics.characters.Character;
 	import mechanics.classes.GameClass;
 	import mechanics.items.*;
@@ -25,7 +26,7 @@ package mechanics.characters
 		protected var _accessory: Accessory;
 		protected var _items: Vector.<Item>;
 		
-		public function BattleCharacter(name: String, spritePath: String, classT: String, str: uint, agl: uint, intl: uint, hp: uint, tp: uint) 
+		public function BattleCharacter(name: String, spritePath: String, classT: String, str: uint = 5, agl: uint = 5, intl: uint = 5, hp: uint = 5, tp: uint = 5) 
 		{
 			super(name, spritePath);
 			
@@ -40,6 +41,8 @@ package mechanics.characters
 			
 			_items = new Vector.<Item>(5);
 			_items.fixed = true;
+			_weapon = EquipmentCollection.weaponCollection.Unarmed;
+			_armor = EquipmentCollection.armorCollection.Unarmed;
 		}
 		
 		public function attack(isElemental: Boolean): int {

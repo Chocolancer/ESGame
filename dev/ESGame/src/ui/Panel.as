@@ -6,19 +6,31 @@ package ui
 	 * 
 	 * @author Jason Bolanos & Matt Fisher
 	 */
-	public class Panel extends FlxSprite
+	public class Panel extends FlxGroup
 	{
-		public function Panel(x: int, y: int, width: int, height: int, color: uint): void
-		{
-			super(x, y);
-			
-			makeGraphic(width, height, color);
-			immovable = true;
-		}
+		public static var borderColor: uint = 0xff0a141f; //default value
+		public static var panelColor: uint = 0xff336699; //default value
 		
-		override public function update(): void
+		private var outerPanel: FlxSprite;
+		private var innerPanel: FlxSprite;
+		
+		public var height: uint;
+		public var width: uint;
+		
+		public function Panel(x: int, y: int, width: int, height: int): void
 		{
-			super.update();
+			super();
+			
+			outerPanel = new FlxSprite(x, y);
+			innerPanel = new FlxSprite(x + 5, y + 5);
+			outerPanel.makeGraphic(width, height, borderColor);
+			innerPanel.makeGraphic(width - 10, height - 10, panelColor);
+			
+			this.height = outerPanel.height;
+			this.width = outerPanel.width;
+			
+			add(outerPanel);
+			add(innerPanel);
 		}
 	}
 }

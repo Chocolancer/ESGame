@@ -7,13 +7,17 @@ package globals
 	 */
 	public class EquipmentCollection 
 	{
-		public var weaponCollection: Object = new Object();
-		public var armorCollection: Object = new Object(); //includes not just panels but textboxes as well
-		public var accessoryCollection: Object = new Object();
-		public var itemCollection: Object = new Object();
+		public static var weaponCollection: Object = new Object();
+		public static var armorCollection: Object = new Object(); //includes not just panels but textboxes as well
+		public static var accessoryCollection: Object = new Object();
+		public static var itemCollection: Object = new Object();
 		
 		public function EquipmentCollection() 
 		{
+			//UNARMED
+			weaponCollection.Unarmed = new Weapon("Unarmed", "", 5, 5);
+			armorCollection.Unarmed = new Armor("None", "", 1);
+			
 			//WEAPONS
 			//Cletus
 			weaponCollection.Orichalcon = new Weapon("Orichalcon", "A long-handled weapon made of an otherworldly alloy impervious to rust. Not even the harbinger knows its true purpose.", 10, 15);
