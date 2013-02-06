@@ -1,10 +1,13 @@
 package states 
 {
+	import org.flixel.FlxG;
 	import mechanics.characters.BattleCharacter;
 	import mechanics.characters.Party;
+	import mechanics.formations.player.FreeFight;
 	import states.abstract.BattleState;
 	import globals.Classes;
 	import globals.Assets;
+	import globals.FormationNames;
 	/**
 	 * ...
 	 * @author Jason Bolanos & Matt Fisher
@@ -33,8 +36,8 @@ package states
 			player4.classType.setBaseStats(player4);
 			enemy1.classType.setBaseStats(enemy1);
 			
-			playerParty = new Party();
-			enemyParty = new Party();
+			playerParty = new Party(FlxG.width / 2, FlxG.height / 10, FlxG.width / 2, FlxG.height / 2, FormationNames.FREEFIGHT);
+			enemyParty = new Party(0, FlxG.height / 10, FlxG.width / 2, FlxG.height / 2, FormationNames.FREEFIGHT);
 			
 			playerParty.add(player1);
 			playerParty.add(player2);

@@ -28,7 +28,7 @@ package states.abstract
 			bg = new BattleBg(background);
 			msgBox = new BattleMessage(BattleUIPositions.PADDING, BattleUIPositions.PADDING, 
 									   FlxG.width - BattleUIPositions.PADDING * 2, BattleUIPositions.MESSAGE_BOX_HEIGHT);
-			msgBox.setText("Preemptive strike!");
+			msgBox.setText("Preemptive strike!"); // test message
 			add(bg);
 			add(enemyParty);
 			add(playerParty);

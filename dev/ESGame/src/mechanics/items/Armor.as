@@ -1,7 +1,7 @@
 package mechanics.items 
 {
 	import mechanics.battle.Element;
-	import globals.Elements;
+	import globals.ElementNames;
 	/**
 	 * ...
 	 * @author Jason Bolanos & Matt Fisher
@@ -10,7 +10,7 @@ package mechanics.items
 	{
 		private var _defense: uint;
 		
-		public function Armor(name: String, desc: String, def: uint, element: String = Elements.KAS, elementMultiplier: uint = 1) 
+		public function Armor(name: String, desc: String, def: uint, element: String = ElementNames.NONE, elementMultiplier: uint = 1) 
 		{
 			super(name, desc, element, elementMultiplier);
 			this._defense = def;

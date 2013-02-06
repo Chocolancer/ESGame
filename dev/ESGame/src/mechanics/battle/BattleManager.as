@@ -47,16 +47,16 @@ package mechanics.battle
 			(damage < 0) ? damage = 0 : damage;
 			
 			//WEAKNESS CALCULATION: defense is bypassed and elemental damage applies
-			if ((attacker.weapon.element.elementName == Elements.RAHM && defender.armor.element.elementName == Elements.LUM)
-			|| (attacker.weapon.element.elementName == Elements.LUM && defender.armor.element.elementName == Elements.EM)
-			|| (attacker.weapon.element.elementName == Elements.EM && defender.armor.element.elementName == Elements.RAHM)) {
+			if ((attacker.weapon.element.elementName == Elements.SUN && defender.armor.element.elementName == Elements.MOON)
+			|| (attacker.weapon.element.elementName == Elements.MOON && defender.armor.element.elementName == Elements.EM)
+			|| (attacker.weapon.element.elementName == Elements.EM && defender.armor.element.elementName == Elements.SUN)) {
 				damage = attacker.attack(true) - defender.defend(false);
 			}
 			
 			//STRENGTH CALCULATION: defense is multiplied by elemental multiplier, elemental damage doesn't apply
-			if ((attacker.weapon.element.elementName == Elements.RAHM && defender.armor.element.elementName == Elements.EM)
-			|| (attacker.weapon.element.elementName == Elements.EM && defender.armor.element.elementName == Elements.LUM)
-			|| (attacker.weapon.element.elementName == Elements.LUM && defender.armor.element.elementName == Elements.RAHM)) {
+			if ((attacker.weapon.element.elementName == Elements.SUN && defender.armor.element.elementName == Elements.EM)
+			|| (attacker.weapon.element.elementName == Elements.EM && defender.armor.element.elementName == Elements.MOON)
+			|| (attacker.weapon.element.elementName == Elements.MOON && defender.armor.element.elementName == Elements.SUN)) {
 				damage = attacker.attack(false) - defender.defend(true);
 			}
 			
