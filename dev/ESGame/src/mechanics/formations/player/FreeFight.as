@@ -9,9 +9,9 @@ package mechanics.formations.player
 	{
 		
 		//default formation; no bonuses
-		public function FreeFight(width: uint, height: uint, size: uint = 4) 
+		public function FreeFight(width: uint, height: uint) 
 		{
-			super(size);
+			super(4);
 			
 			for (var i: uint = 0; i < _size; i++) {
 				_bonusAgility[i] = 0;

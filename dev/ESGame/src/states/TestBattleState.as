@@ -36,7 +36,7 @@ package states
 			player4.classType.setBaseStats(player4);
 			enemy1.classType.setBaseStats(enemy1);
 			
-			playerParty = new Party(FlxG.width / 2, FlxG.height / 10, FlxG.width / 2, FlxG.height / 2, FormationNames.FREEFIGHT);
+			playerParty = new Party(FlxG.width / 2, FlxG.height / 10, FlxG.width / 2, FlxG.height / 2, FormationNames.CARAVAN);
 			enemyParty = new Party(0, FlxG.height / 10, FlxG.width / 2, FlxG.height / 2, FormationNames.FREEFIGHT);
 			
 			playerParty.add(player1);

@@ -12,6 +12,7 @@ package globals
 		public static const LFLANK: String = "Left Flank";
 		public static const RFLANK: String = "Right Flank";
 		public static const VANGUARD: String = "Vanguard";
+		public static const SENTINEL: String = "Sentinel";
 	}
 
 }

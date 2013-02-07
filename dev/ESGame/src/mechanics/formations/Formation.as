@@ -3,12 +3,7 @@ package mechanics.formations
 	import globals.FormationNames;
 	import mechanics.characters.BattleCharacter;
 	import mechanics.characters.Party;
-	import mechanics.formations.player.Caravan;
-	import mechanics.formations.player.FreeFight;
-	import mechanics.formations.player.LeftFlank;
-	import mechanics.formations.player.Linear;
-	import mechanics.formations.player.RightFlank;
-	import mechanics.formations.player.Vanguard;
+	import mechanics.formations.player.*;
 	/**
 	 * ...
 	 * @author Jason Bolanos & Matt Fisher
@@ -48,6 +43,9 @@ package mechanics.formations
 					break;
 				case FormationNames.VANGUARD:
 					return new Vanguard(width, height);
+					break;
+				case FormationNames.SENTINEL:
+					return new Sentinel(width, height);
 					break;
 				default:
 					return new FreeFight(width, height);

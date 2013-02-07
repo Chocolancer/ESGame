@@ -5,10 +5,10 @@ package mechanics.formations.player
 	 * ...
 	 * @author Jason Bolanos & Matt Fisher
 	 */
-	public class RightFlank extends Formation
+	public class Sentinel extends Formation
 	{
-		//top L formation
-		public function RightFlank(width: uint, height: uint) 
+		
+		public function Sentinel(width: uint, height: uint) 
 		{
 			super(4);
 			
@@ -26,13 +26,13 @@ package mechanics.formations.player
 			_bonusStrength[3] = 0;
 			
 			formationx[0] = 0;
-			formationy[0] = height / 2;
+			formationy[0] = height / 4;
 			formationx[1] = 0;
-			formationy[1] = height / 4;
+			formationy[1] = height / 4 * 3;
 			formationx[2] = width / 4;
-			formationy[2] = height / 4;
-			formationx[3] = width / 2;
-			formationy[3] = height / 4;
+			formationy[2] = height / 2;
+			formationx[3] = width / 4 * 3;
+			formationy[3] = height / 2;
 		}
 		
 	}

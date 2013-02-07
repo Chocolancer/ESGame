@@ -4,6 +4,7 @@ package states.abstract
 	import mechanics.characters.BattleCharacter;
 	import mechanics.characters.Party;
 	import org.flixel.FlxGroup;
+	import org.flixel.FlxSprite;
 	import org.flixel.FlxState;
 	import org.flixel.FlxG;
 	import ui.battle.*;
@@ -44,6 +45,10 @@ package states.abstract
 		override public function update(): void {
 			
 			super.update();
+		}
+		
+		private function attack(attacker: BattleCharacter, defender: BattleCharacter): void {
+			
 		}
 		
 	}
