@@ -1,6 +1,6 @@
 package ui.battle 
 {
-	import globals.BattleUIPositions;
+	import globals.battle.BattleUIPositions;
 	import mechanics.characters.BattleCharacter;
 	import mx.core.FlexTextField;
 	import org.flixel.FlxG;
@@ -27,14 +27,14 @@ package ui.battle
 		public function PlayerStatOverlay(x: uint, y: uint, characterRef:*) 
 		{
 			backPanel = new Panel(x, y, BattleUIPositions.STAT_OVERLAY_WIDTH - BattleUIPositions.PADDING, BattleUIPositions.STAT_OVERLAY_HEIGHT);
-			hpBar = new FlxBar(x + 5, y + backPanel.height / 3, FlxBar.FILL_LEFT_TO_RIGHT, backPanel.width - 5, 15, characterRef, "currhp", 0, characterRef.maxhp);
+			hpBar = new FlxBar(x + 5, y + backPanel.height / 3, FlxBar.FILL_LEFT_TO_RIGHT, backPanel.width - 5, 15, characterRef, "currenthp", 0, characterRef.maxhp);
 			hpBar.createFilledBar(0xff000000, 0xffff0000);
-			tpBar = new FlxBar(x + 5, y + (backPanel.height / 3) + hpBar.height + 5, FlxBar.FILL_LEFT_TO_RIGHT, backPanel.width - 5, 15, characterRef, "currtp", 0, characterRef.maxtp);
+			tpBar = new FlxBar(x + 5, y + (backPanel.height / 3) + hpBar.height + 5, FlxBar.FILL_LEFT_TO_RIGHT, backPanel.width - 5, 15, characterRef, "currenttp", 0, characterRef.maxtp);
 			tpBar.createFilledBar(0xff000000, 0xff0000ff);
 			name = new FlxText(x, y, backPanel.width, characterRef.characterName);
 			name.size = 15;
-			hpNum = new FlxText(hpBar.x + hpBar.height, hpBar.y, backPanel.width, characterRef.currhp);
-			tpNum = new FlxText(tpBar.x + tpBar.height, tpBar.y, backPanel.width, characterRef.currtp);
+			hpNum = new FlxText(hpBar.x + hpBar.height, hpBar.y, backPanel.width, characterRef.currenthp);
+			tpNum = new FlxText(tpBar.x + tpBar.height, tpBar.y, backPanel.width, characterRef.currenttp);
 			
 			//add(backPanel);
 			add(hpBar);

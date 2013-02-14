@@ -12,7 +12,7 @@ package mechanics.characters
 		protected var _characterName: String;
 		protected var _dialogue: Array;
 				
-		public function Character(name: String, spritePath: String)
+		public function Character(name: String, spritePath: Class)
 		{
 			this._characterName = name;
 		}

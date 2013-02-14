@@ -1,4 +1,4 @@
-package globals 
+package globals.battle 
 {
 	import org.flixel.FlxG;
 	/**

@@ -1,33 +1,53 @@
 package mechanics.battle 
 {
+	import globals.battle.BattleTypes;
+	import globals.battle.BattleFlags;
 	import mechanics.characters.*;
 	import mechanics.classes.GameClass;
 	import globals.Elements;
 	import mechanics.characters.Party;
+	import org.flixel.FlxSprite;
 	/**
 	 * ...
 	 * @author Jason Bolanos & Matt Fisher
 	 */
 	public class BattleManager 
 	{
+		private var _playerParty: Array;
+		private var _enemyParty: Array;
+		private var _battleMessageRef:*;
 		
-		public function BattleManager() 
+		public function BattleManager(playerParty: Party, enemyParty: Party, battleMessage:*) 
 		{
-			
+			_playerParty = playerParty.members;
+			_enemyParty = enemyParty.members;
+			_battleMessageRef = battleMessage;
 		}
 		
-		//returns a vector containing the order in which the battle will go
-		public function getBattleOrder(mainParty: Party, enemyParty: Party): Array {
-			var order: Array = new Array(mainParty.members.length + enemyParty.members.length);
-			var sorted: Boolean = false;
-			var temp: BattleCharacter;
+		public function getNormalBattleOrder(): Array {
+			var order: Array = new Array(_playerParty.length + _enemyParty.length);
 			
 			//adding all members into one array
-			for (var i: int = 0; i < mainParty.members.length; i++) {
-				order[i] = mainParty.members[i];
+			for (var i: int = 0; i < _playerParty.length; i++) {
+				order[i] = _playerParty[i];
 			}
-			for (var i: int = 0; i < enemyParty.members.length; i++) {
-				order[i] = enemyParty.members[i];
+			for (i = 0; i < _enemyParty.length; i++) {
+				order[i] = _enemyParty[i];
+			}
+			
+			order.sortOn("agility");
+			return order;
+		}
+		
+		public function getRiggedBattleOrder(battleType: String): Array {
+			
+			var order: Array;
+			
+			if (battleType == BattleTypes.AMBUSH) {
+				order = _enemyParty;
+			}
+			if (battleType == BattleTypes.AMBUSH) {
+				order = _playerParty;
 			}
 			
 			order.sortOn("agility");
@@ -35,11 +55,12 @@ package mechanics.battle
 		}
 
 		//reads a command taken from the state
-		//public function readCommand(skillCategory: String, skill: String) {
-			//
-		//}
+		public function readCommand(skillCategory: String, skill: String): void {
+			
+		}
 		
-		public function startBattleStep(attacker: BattleCharacter, defender: BattleCharacter): int {
+		public function startBattleStep(attacker: BattleCharacter): int {
+			var defender:BattleCharacter = _enemyParty[0];
 			//NON-ELEMENTAL CALCULATION
 			var damage: int = attacker.attack(false) - defender.defend(false);
 			
@@ -48,25 +69,48 @@ package mechanics.battle
 			
 			//WEAKNESS CALCULATION: defense is bypassed and elemental damage applies
 			if ((attacker.weapon.element.elementName == Elements.SUN && defender.armor.element.elementName == Elements.MOON)
-			|| (attacker.weapon.element.elementName == Elements.MOON && defender.armor.element.elementName == Elements.EM)
-			|| (attacker.weapon.element.elementName == Elements.EM && defender.armor.element.elementName == Elements.SUN)) {
+			|| (attacker.weapon.element.elementName == Elements.MOON && defender.armor.element.elementName == Elements.STAR)
+			|| (attacker.weapon.element.elementName == Elements.STAR && defender.armor.element.elementName == Elements.SUN)) {
 				damage = attacker.attack(true) - defender.defend(false);
 			}
 			
 			//STRENGTH CALCULATION: defense is multiplied by elemental multiplier, elemental damage doesn't apply
-			if ((attacker.weapon.element.elementName == Elements.SUN && defender.armor.element.elementName == Elements.EM)
-			|| (attacker.weapon.element.elementName == Elements.EM && defender.armor.element.elementName == Elements.MOON)
+			if ((attacker.weapon.element.elementName == Elements.SUN && defender.armor.element.elementName == Elements.STAR)
+			|| (attacker.weapon.element.elementName == Elements.STAR && defender.armor.element.elementName == Elements.MOON)
 			|| (attacker.weapon.element.elementName == Elements.MOON && defender.armor.element.elementName == Elements.SUN)) {
 				damage = attacker.attack(false) - defender.defend(true);
 			}
 			
-			defender.currhp = defender.currhp - damage;
+			if ((defender.currenthp = defender.currenthp - damage) == 0) {
+				defender.alive = false;
+			}
+			_battleMessageRef.setText(attacker.characterName + " attacks " + defender.characterName + " for " + damage + " damage!");
+			BattleFlags.TURN++;
 			return damage;
 		}
 		
-		//true: battle ends, false: battle ongoing
-		public function endBattle(mainParty: Party, enemyParty: Party): Boolean {
-			return (mainParty.countDead() == mainParty.members.length || enemyParty.countDead() == enemyParty.members.length);
+		//true: game over
+		public function isPlayerPartyDead(): Boolean {
+			var count: uint = 0;
+			
+			for each(var player: FlxSprite in _playerParty) {
+				if (!player.alive)
+					count++;
+			}
+			
+			return (count == _playerParty.length);
+		}
+		
+		//true: battle end
+		public function isEnemyPartyDead(): Boolean {
+			var count: uint = 0;
+			
+			for each(var enemy: FlxSprite in _enemyParty) {
+				if (!enemy.alive)
+					count++;
+			}
+			
+			return (count == _enemyParty.length);
 		}
 	}
 

@@ -17,8 +17,8 @@ package mechanics.characters
 		protected var _intelligence: uint;
 		protected var _maxhp: uint;
 		protected var _maxtp: uint;
-		protected var _currhp: int;
-		protected var _currtp: int;
+		protected var _currenthp: int;
+		protected var _currenttp: int;
 		protected var _tpRecovery: uint;
 		
 		protected var _weapon: Weapon;
@@ -26,17 +26,17 @@ package mechanics.characters
 		protected var _accessory: Accessory;
 		protected var _items: Vector.<Item>;
 		
-		public function BattleCharacter(name: String, spritePath: String, classT: String, str: uint = 5, agl: uint = 5, intl: uint = 5, hp: uint = 5, tp: uint = 5) 
+		public function BattleCharacter(name: String, spriteImage: Class, classT: String, str: uint = 5, agl: uint = 5, intl: uint = 5, hp: uint = 5, tp: uint = 5) 
 		{
-			super(name, spritePath);
+			super(name, spriteImage);
 			
 			this._classType = GameClass.getClass(classT);
 			
 			this._strength = str;
 			this._agility = agl;
 			this._intelligence = intl;
-			this._maxhp = this._currhp = hp;
-			this._maxtp = this._currtp = tp;
+			this._maxhp = this._currenthp = hp;
+			this._maxtp = this._currenttp = tp;
 			this._tpRecovery = Math.ceil(this._maxtp / this._intelligence);
 			
 			_items = new Vector.<Item>(5);
@@ -121,35 +121,35 @@ package mechanics.characters
 			_maxtp = value;
 		}
 		
-		public function get currhp():int 
+		public function get currenthp():int 
 		{
-			return _currhp;
+			return _currenthp;
 		}
 		
-		public function set currhp(value:int):void 
+		public function set currenthp(value:int):void 
 		{
-			this._currhp = value;
-			if (this._currhp < 0) {
-				this._currhp = 0;
+			this._currenthp = value;
+			if (this._currenthp < 0) {
+				this._currenthp = 0;
 			}
-			if (this._currhp > this._maxhp) {
-				this._currhp = this._maxhp;
+			if (this._currenthp > this._maxhp) {
+				this._currenthp = this._maxhp;
 			}
 		}
 		
-		public function get currtp():int 
+		public function get currenttp():int 
 		{
-			return _currtp;
+			return _currenttp;
 		}
 		
-		public function set currtp(value:int):void 
+		public function set currenttp(value:int):void 
 		{
-			this._currtp = value;
-			if (this._currtp < 0) {
-				this._currtp = 0;
+			this._currenttp = value;
+			if (this._currenttp < 0) {
+				this._currenttp = 0;
 			}
-			if (this._currtp > this._maxtp) {
-				this._currtp = this._maxtp;
+			if (this._currenttp > this._maxtp) {
+				this._currenttp = this._maxtp;
 			}
 		}
 		

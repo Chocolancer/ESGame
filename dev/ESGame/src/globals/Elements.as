@@ -5,7 +5,7 @@ package globals
 	 * ...
 	 * @author Jason Bolanos & Matt Fisher
 	 */
-	public final class ElementNames
+	public final class Elements
 	{
 		public static const SUN:String = "Rahm";
 		public static const MOON:String = "Lum";

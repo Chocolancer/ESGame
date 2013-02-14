@@ -98,8 +98,8 @@ package mechanics.classes
 			chr.intelligence = _baseInt;
 			chr.maxhp = _baseHp;
 			chr.maxtp = _baseTp;
-			chr.currhp = _baseHp;
-			chr.currtp = _baseTp;
+			chr.currenthp = _baseHp;
+			chr.currenttp = _baseTp;
 			chr.tpRecovery = Math.ceil(chr.maxtp / chr.intelligence);
 		}
 		

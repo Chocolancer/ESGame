@@ -39,6 +39,7 @@ package mechanics.characters
 			
 			return object;
 		}
+		
 	}
 
 }
