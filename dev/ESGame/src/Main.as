@@ -1,5 +1,6 @@
 package 
 {
+	import states.*;
 	import org.flixel.*;
 	import org.esgame.gotd.state.PlayState;
 

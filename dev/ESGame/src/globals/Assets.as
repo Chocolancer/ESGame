@@ -6,7 +6,7 @@ package globals
 	 */
 	public class Assets 
 	{
-		[Embed(source = "../../resources/images/battle/desert-battle.png")] public static var DESERT_BG: Class;
+		[Embed(source = "../../assets/bg/battle/desert-battle.png")] public static var DESERT_BG: Class;
 		
 	}
 

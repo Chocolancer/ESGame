@@ -74,7 +74,7 @@ package states.abstract
 		
 		override public function update(): void {
 			_elapsed++;
-			if (_elapsed % 120 == 0 && !BattleFlags.IS_BATTLE_END) {
+			if (_elapsed % 120 == 0 && !BattleFlags.BATTLE_END) {
 				_commandSelector.visible = false;
 				if (_battleType == BattleTypes.NORMAL && BattleFlags.TURN == 0)
 					_order = _battleManager.getNormalBattleOrder();
@@ -82,12 +82,12 @@ package states.abstract
 				_battleManager.startBattleStep(_order[BattleFlags.TURN]);
 				if (_battleManager.isPlayerPartyDead()) {
 					_msgBox.setText("You've been annihilated!");
-					BattleFlags.IS_BATTLE_END = true;
+					BattleFlags.BATTLE_END = true;
 				}
 				
 				if (_battleManager.isEnemyPartyDead()) {
 					_msgBox.setText("Victory!");
-					BattleFlags.IS_BATTLE_END = true;
+					BattleFlags.BATTLE_END = true;
 				}
 				
 				if (BattleFlags.TURN == _order.length - 1) {
