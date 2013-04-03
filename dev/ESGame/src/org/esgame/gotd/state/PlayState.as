@@ -13,31 +13,34 @@ package  org.esgame.gotd.state
 	public class PlayState extends FlxState
 	{
 		
-		//generate all the Class references to each room
+		//generate all of the references to each room
 		public var s1:Class = Room1;
 		public var s2:Class = Room2;
 		
-		//make an array out of the Class references of the rooms
+		//an array representation of all the rooms in this state
 		public static var rooms:Array;
 		
-		//make one room object that the rooms can be loaded into
+		//the current room that the player is standing in
 		private var _currentRoom:BaseRoom;
 		
-		//make the player object
+		//the player object. This is what the player is interacting with
 		public var player:Player = new Player;
 		
-		//set the room counter at 0
-		private var _currentRoomNumber:int = 0;
+		//the number of the room that the player is currently standing in.
+		//this is directly related to the rooms[] array, where this number
+		//represents the room as a one-indexed number in the array
+		//(e.g. to access room[0], set _currentRoomNumber to 1)
+		private var _currentRoomNumber:int = 1;
 		
 		override public function create():void
 		{
 			rooms = [s1, s2];
 			FlxG.bgColor = 0xff000000;
 			
-			makeRoom();
-			makePlayer();
+			//start in room #1, the main room
+			changeRooms(1);
 			
-			FlxG.log(_currentRoom.roomNumber);
+			FlxG.log("Entering Room " + _currentRoom.roomNumber);
 			
 			FlxG.worldBounds = new FlxRect(0, 0, _currentRoom.roomWidth, _currentRoom.roomHeight);
 			
@@ -62,7 +65,7 @@ package  org.esgame.gotd.state
 		// change to another room
 		public function changeRooms(whichRoom:uint):void
 		{
-			
+			//change from 1-indexed to 0-indexed
 			_currentRoomNumber = whichRoom - 1;
 			
 			// remove old objects from the view
