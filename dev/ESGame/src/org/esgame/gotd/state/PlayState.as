@@ -35,6 +35,7 @@ package  org.esgame.gotd.state
 			FlxG.bgColor = 0xff000000;
 			
 			makeRoom();
+			makePlayer();
 			
 			FlxG.log(_currentRoom.roomNumber);
 			
