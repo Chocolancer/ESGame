@@ -71,6 +71,12 @@ package  org.esgame.gotd.state
 			
 			// generate the new room
 			makeRoom();
+			
+			//create the player
+			makePlayer();
+			
+			// make a flash transition
+			FlxG.camera.flash(0xff000000, 1, null, false);
 		}
 		
 		//generate the room
@@ -78,14 +84,17 @@ package  org.esgame.gotd.state
 		{
 			_currentRoom = new rooms[_currentRoomNumber];
 			
+			// add room objects to the view
 			add(_currentRoom.floorMap);
 			add(_currentRoom.wallMap);
-			
+		}
+		
+		//creates the player and adds him to the current room
+		public function makePlayer():void
+		{
 			player.reset(_currentRoom.roomWidth / 2, _currentRoom.roomHeight / 2);
 			FlxG.worldBounds.make(0, 0, _currentRoom.roomWidth, _currentRoom.roomHeight);
 			add(player);
-			
-			FlxG.camera.flash(0xff000000, 1, null, false);
 		}
 		
 		// retrieve the value of the tile the player is standing on
