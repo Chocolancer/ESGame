@@ -29,7 +29,7 @@ package  org.esgame.gotd.state
 		//the number of the room that the player is currently standing in.
 		//this is directly related to the rooms[] array, where this number
 		//represents the room as a one-indexed number in the array
-		//(e.g. to access room[0], set _currentRoomNumber to 1)
+		//(e.g. to access rooms[0], set _currentRoomNumber to 1)
 		private var _currentRoomNumber:int = 1;
 		
 		override public function create():void
