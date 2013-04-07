@@ -1,19 +1,18 @@
 package mechanics.characters 
 {
-	import sprites.DrawableEntity;
+	import org.flixel.*;
 	/**
 	 * ...
 	 * @author Jason Bolanos & Matt Fisher
 	 */
-	public class Character extends DrawableEntity
+	public class Character extends FlxSprite
 	{
-		//default values
-		
 		protected var _characterName: String;
 		protected var _dialogue: Array;
 				
 		public function Character(name: String, spritePath: Class)
 		{
+			super();
 			this._characterName = name;
 		}
 		

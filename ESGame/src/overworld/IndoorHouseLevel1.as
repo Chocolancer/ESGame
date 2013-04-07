@@ -1,8 +1,8 @@
-package org.esgame.gotd.overworld 
+package overworld 
 {
 	import org.flixel.*;
-	import org.esgame.gotd.assets.Assets;
-	import org.esgame.gotd.entity.Player;
+	import globals.Assets;
+	import mechanics.characters.FieldCharacter;
 	
 	/**
 	 * ...

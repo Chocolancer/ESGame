@@ -30,7 +30,7 @@ package states.abstract
 		
 		private var _battleManager: BattleManager;
 		
-		private var _elapsed = 0;
+		private var _elapsed: int = 0;
 		
 		public function BattleState(playerParty: Party, enemyParty: Party, background: Class, battleType: String = BattleTypes.NORMAL) 
 		{

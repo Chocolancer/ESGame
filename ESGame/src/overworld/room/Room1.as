@@ -1,4 +1,4 @@
-package org.esgame.gotd.room 
+package overworld.room 
 {
 	/**
 	 * ...

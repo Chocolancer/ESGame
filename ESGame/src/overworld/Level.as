@@ -1,4 +1,4 @@
-package org.esgame.gotd.overworld 
+package overworld 
 {
 	
 	/**

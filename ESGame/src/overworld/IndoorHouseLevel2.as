@@ -1,4 +1,4 @@
-package org.esgame.gotd.overworld 
+package overworld 
 {
 	import org.esgame.gotd.overworld.TopDownGameLevel;
 	import org.esgame.gotd.assets.Assets;

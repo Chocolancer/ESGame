@@ -1,72 +1,14 @@
-<<<<<<< HEAD
-package org.esgame.gotd.entity 
+package mechanics.characters 
 {
+	import globals.Assets;
 	import org.flixel.*;
-	import org.esgame.gotd.assets.Assets;
-	
 	/**
-	 * Player-controlled entity
-	 * @author Cody Sandahl
+	 * ...
+	 * @author Jason Bolanos & Matt Fisher
 	 */
-	public class Player extends TopDownEntity
+	public class FieldCharacter extends FlxSprite
 	{
-		/**
-		 * Constructor
-		 * @param	X	X location of the entity
-		 * @param	Y	Y location of the entity
-		 */
-		public function Player(X:Number=100, Y:Number=100):void {
-			super(X, Y);
-			loadGraphic(
-				Assets.RANGER_SPRITE, // image to use
-				true, // animated
-				false, // don't generate "flipped" images since they're already in the image
-				TopDownEntity.ENTITY_SIZE.x, // width of each frame (in pixels)
-				TopDownEntity.ENTITY_SIZE.y // height of each frame (in pixels)
-			);
-		}
-		
-		/**
-		 * Check for user input to control this entity
-		 */
-		override protected function updateControls():void {
-			super.updateControls();
-			// check keys
-			// NOTE: this accounts for someone pressing multiple arrow keys at the same time (even in opposite directions)
-			var movement:FlxPoint = new FlxPoint();
-			if (FlxG.keys.pressed("LEFT"))
-				movement.x -= 1;
-			if (FlxG.keys.pressed("RIGHT"))
-				movement.x += 1;
-			if (FlxG.keys.pressed("UP"))
-				movement.y -= 1;
-			if (FlxG.keys.pressed("DOWN"))
-				movement.y += 1;
-			// check final movement direction
-			if (movement.x < 0)
-				moveLeft();
-			else if (movement.x > 0)
-				moveRight();
-			if (movement.y < 0)
-				moveUp();
-			else if (movement.y > 0)
-				moveDown();
-		}
-	}
-}
-=======
-package org.esgame.gotd.entity 
-{
-	import org.flixel.*;
-	import org.esgame.gotd.assets.Assets;
-	
-	/**
-	 * Player-controlled entity
-	 * @author Matthew Fisher
-	 */
-	public class Player extends FlxSprite
-	{
-			public static const RUNSPEED:uint = 100; // the max speed that the player can run at
+		public static const RUNSPEED:uint = 100; // the max speed that the player can run at
 			
 			public static const SPRITE_SIZE:FlxPoint = new FlxPoint(16, 18); // size in pixels
 		
@@ -75,7 +17,7 @@ package org.esgame.gotd.entity
 		 * @param	X	X location of the player
 		 * @param	Y	Y location of the player
 		 */
-		public function Player(X:Number = 0, Y:Number = 0):void
+		public function FieldCharacter(X:Number = 0, Y:Number = 0):void
 		{
 			super(X, Y);
 			
@@ -240,5 +182,5 @@ package org.esgame.gotd.entity
 			acceleration.y = RUNSPEED * 4; // accelerate to top speed in 1/4 of a second
 		}
 	}
+
 }
->>>>>>> matthewdev

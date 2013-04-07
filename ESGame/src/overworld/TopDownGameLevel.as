@@ -1,4 +1,4 @@
-package org.esgame.gotd.overworld 
+package overworld 
 {
 	import flash.display.TriangleCulling;
 	import org.flixel.*;

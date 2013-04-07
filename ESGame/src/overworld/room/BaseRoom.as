@@ -1,6 +1,7 @@
-package org.esgame.gotd.room 
+package overworld.room 
 {
-	import org.esgame.gotd.assets.*;
+	import globals.Assets;
+	import globals.RoomData;
 	import org.flixel.*;
 	
 	/**
@@ -11,7 +12,7 @@ package org.esgame.gotd.room
 	public class BaseRoom extends FlxGroup
 	{
 		// the data of all the rooms
-		public var roomData:RoomData;
+		public var roomData: RoomData;
 		
 		// CSV files for the floor, the interactible objects, and the walls
 		public var floorCSV:Class;
